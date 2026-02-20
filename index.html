@@ -292,7 +292,7 @@
                 <li>Change bed linens</li>
                 <li>Hang fresh towels</li>
               </ul>
-              <span class="ssc-price">$0.11/sqft</span>
+              <span class="ssc-price">$0.10/sqft</span>
             </button>
             <button class="service-select-card" data-service="deep" onclick="selectService(this)">
               <div class="ssc-icon">
@@ -309,7 +309,7 @@
                 <li>Door &amp; wall faces</li>
                 <li>Interior windows</li>
               </ul>
-              <span class="ssc-price">$0.18/sqft</span>
+              <span class="ssc-price">$0.16/sqft</span>
             </button>
             <button class="service-select-card service-select-card-whiteglove" data-service="whiteglove" onclick="selectService(this)">
               <div class="ssc-icon ssc-icon-wg">
@@ -444,11 +444,11 @@
             <div class="input-group input-group-large">
               <label>Square Footage</label>
               <div class="input-wrap">
-                <input type="number" id="qSqft" value="1800" min="400" max="15000" oninput="updateLivePrice()">
+                <input type="number" id="qSqft" value="1750" min="400" max="15000" oninput="updateLivePrice()">
                 <span class="input-suffix">sqft</span>
               </div>
               <div class="input-slider-wrap">
-                <input type="range" id="qSqftRange" min="400" max="8000" value="1800" oninput="syncRange('qSqft', this.value)">
+                <input type="range" id="qSqftRange" min="400" max="8000" value="1750" oninput="syncRange('qSqft', this.value)">
                 <div class="slider-labels"><span>400</span><span>2000</span><span>4000</span><span>8000</span></div>
               </div>
             </div>
@@ -460,7 +460,7 @@
                   <input type="number" id="qBeds" value="3" min="1" max="10" readonly>
                   <button onclick="stepValue('qBeds', 1)" class="stepper-btn">+</button>
                 </div>
-                <span class="input-hint">+$12&ndash;$28/room</span>
+                <span class="input-hint">+$14&ndash;$22/room</span>
               </div>
               <div class="input-group">
                 <label>Bathrooms</label>
@@ -1040,7 +1040,7 @@
                 "description": "Regular upkeep and maintenance. Dust top-to-bottom, kitchens, bathrooms, bedrooms, mop and vacuum all floors, change linens."
               },
               "priceCurrency": "USD",
-              "description": "$0.11 per square foot"
+              "description": "$0.10 per square foot"
             },
             {
               "@type": "Offer",
@@ -1050,7 +1050,7 @@
                 "description": "Top-to-bottom inside and out. Everything in Standard plus oven, fridge, baseboards, blinds, cabinets, interior windows."
               },
               "priceCurrency": "USD",
-              "description": "$0.18 per square foot"
+              "description": "$0.16 per square foot"
             },
             {
               "@type": "Offer",
@@ -1110,7 +1110,7 @@
             "name": "How much does house cleaning cost in Houston?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Standard cleaning starts at $0.11 per square foot. A typical 1,800 sqft home runs approximately $198-$234. Deep cleaning is $0.18 per square foot."
+              "text": "Standard cleaning starts at $0.10 per square foot. A typical 1,750 sqft home runs approximately $170-$200. Deep cleaning is $0.16 per square foot."
             }
           }
         ]

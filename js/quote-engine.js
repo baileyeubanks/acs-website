@@ -11,7 +11,7 @@ var quoteState = {
   totalSteps: 5,
   serviceType: 'standard',
   nextDay: false,
-  sqft: 1800,
+  sqft: 1750,
   beds: 3,
   baths: 2,
   frequency: 'once',
@@ -40,27 +40,27 @@ var quoteState = {
 
 // ---- PRICING CONFIG ----
 var RATES = {
-  standard: 0.11,
-  routine:  0.14,
-  deep:     0.18,
+  standard: 0.10,
+  routine:  0.13,
+  deep:     0.16,
 };
 
 var MINIMUMS = {
-  standard: 115,
-  routine:  145,
-  deep:     175,
+  standard: 110,
+  routine:  135,
+  deep:     165,
 };
 
 var BEDROOM_SURCHARGE = {
-  standard: 12,
-  routine:  16,
-  deep:     20,
+  standard: 14,
+  routine:  18,
+  deep:     22,
 };
 
 var BATH_SURCHARGE = {
-  standard: 8,
+  standard: 9,
   routine:  12,
-  deep:     15,
+  deep:     14,
 };
 
 var NEXT_DAY_PREMIUM = 0.25;
