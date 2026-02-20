@@ -2385,30 +2385,30 @@ img, video { display: block; max-width: 100%; }
   .hide-mobile { display: none; }
 
   .hero-logo-badge {
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
 
   .hero-tag {
-    margin-bottom: 10px;
+    margin-bottom: 2px;
   }
 
   .hero-headline {
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
 
   .flare-wrap {
-    margin: 0 auto 12px;
+    margin: -2px auto 4px;
   }
 
   .hero-sub {
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 8px;
   }
 
   .hero-actions .btn {
@@ -2417,7 +2417,7 @@ img, video { display: block; max-width: 100%; }
 
   .hero-micro {
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   .hero-micro-dot { display: none; }
