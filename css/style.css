@@ -549,7 +549,7 @@ img, video { display: block; max-width: 100%; }
 }
 
 .hero-logo-mark {
-  height: clamp(82px, 15vw, 148px);
+  height: clamp(115px, 21vw, 207px);
   width: auto;
   margin: 0 auto;
   object-fit: contain;
@@ -2575,7 +2575,7 @@ html {
   }
 
   .hero-logo-mark {
-    height: clamp(56px, 14vw, 88px);
+    height: clamp(78px, 20vw, 123px);
   }
 
   .hero-tag {
@@ -2661,7 +2661,7 @@ html {
   }
 
   .hero-logo-mark {
-    height: 50px;
+    height: 70px;
   }
 
   .hero-tag {
@@ -2700,7 +2700,7 @@ html {
   }
 
   .hero-logo-mark {
-    height: 60px;
+    height: 84px;
   }
 
   .hero-headline {
