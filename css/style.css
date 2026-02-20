@@ -2563,10 +2563,15 @@ html {
     padding: 8px 0;
   }
 
-  /* Hero mobile refinements — clear fixed nav + safe area on notched iPhones */
+  /* Hero mobile — push flex centering below fixed nav + safe area */
+  .hero {
+    padding-top: calc(72px + env(safe-area-inset-top, 0px));
+    min-height: 100dvh;
+    box-sizing: border-box;
+  }
+
   .hero-content {
-    padding: 100px 24px 0;
-    padding-top: calc(100px + env(safe-area-inset-top, 0px));
+    padding: 0 24px;
   }
 
   .hero-logo-mark {
@@ -2692,7 +2697,6 @@ html {
 
   .hero-content {
     max-width: 600px;
-    padding-top: 80px;
   }
 
   .hero-logo-mark {
