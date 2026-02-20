@@ -4,10 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Astro Cleaning Services | Houston's Premium Home Cleaning</title>
-  <meta name="description" content="Houston's trusted residential cleaning team. Instant quotes, transparent pricing, real people who care about your home.">
+  <meta name="description" content="Houston's trusted residential cleaning crew. Transparent pricing, next-day service, fully insured. Get an instant quote in 60 seconds.">
   <meta name="theme-color" content="#060e1a">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Astro Cleaning">
   <meta name="format-detection" content="telephone=no">
+
+  <!-- Open Graph (Facebook, iMessage, LinkedIn, Slack, Discord) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://astrocleanings.com/">
+  <meta property="og:title" content="Astro Cleaning Services | Houston's Premium Home Cleaning">
+  <meta property="og:description" content="Houston's trusted cleaning crew. Transparent pricing, next-day service, fully insured. Get an instant quote in 60 seconds.">
+  <meta property="og:image" content="https://astrocleanings.com/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Astro Cleaning Services — Houston's Premier Cleaning Crew">
+  <meta property="og:site_name" content="Astro Cleaning Services">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Astro Cleaning Services | Houston's Premium Home Cleaning">
+  <meta name="twitter:description" content="Transparent pricing, next-day service, fully insured. Get an instant quote in 60 seconds.">
+  <meta name="twitter:image" content="https://astrocleanings.com/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Astro Cleaning Services — Houston">
+
+  <!-- Canonical & Favicons -->
+  <link rel="canonical" href="https://astrocleanings.com/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
+  <!-- Geo / Local SEO -->
+  <meta name="geo.region" content="US-TX">
+  <meta name="geo.placename" content="Houston">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com">
@@ -755,8 +787,9 @@
             <img src="assets/crew-2.jpg" alt="Caio Gustin — Owner &amp; President" class="crew-photo" loading="lazy">
           </div>
           <div class="crew-quote-block">
-            <div class="crew-quote-mark">&ldquo;</div>
+            <div class="crew-quote-mark crew-quote-open">&ldquo;</div>
             <p class="crew-quote">Cleaning is about more than floors and counters &mdash; it's about building a better life. I came to the U.S. from Brazil with a dream to work hard, create something of my own, and make a difference for the people around me. My sister and I started Astro to bring comfort to our clients, build real relationships, and keep learning as we grow. Your home should feel alive and cared for &mdash; just like the dream that started ours.</p>
+            <div class="crew-quote-mark crew-quote-close">&rdquo;</div>
             <div class="crew-signature">
               <img src="assets/signature-caio.png" alt="Caio Gustin signature" class="crew-sig-img" loading="lazy">
               <div class="crew-sig-info">
@@ -773,8 +806,9 @@
             <img src="assets/crew-1.jpg" alt="Kailany Braga — Operations Lead" class="crew-photo" loading="lazy">
           </div>
           <div class="crew-quote-block">
-            <div class="crew-quote-mark">&ldquo;</div>
+            <div class="crew-quote-mark crew-quote-open">&ldquo;</div>
             <p class="crew-quote">I've always believed that the way you care for someone's home says everything about who you are. Every detail matters. When I walk into a space, I see what people live in every day &mdash; and I want to make it feel like a reset. This isn't just a job for us. It's how we show up for Houston.</p>
+            <div class="crew-quote-mark crew-quote-close">&rdquo;</div>
             <div class="crew-signature">
               <span class="crew-sig-handwritten">Kailany Braga</span>
               <div class="crew-sig-info">
@@ -946,6 +980,144 @@
     <svg class="audio-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
     <svg class="audio-icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
   </button>
+
+  <!-- Structured Data: LocalBusiness + FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "HouseCleaning"],
+        "@id": "https://astrocleanings.com/#business",
+        "name": "Astro Cleaning Services",
+        "url": "https://astrocleanings.com",
+        "telephone": "+13464015841",
+        "email": "caio@astrocleanings.com",
+        "description": "Houston's trusted residential cleaning crew. Standard, deep, and white glove cleaning for homes across the Greater Houston area. Transparent pricing, fully insured, family-owned.",
+        "priceRange": "$$",
+        "currenciesAccepted": "USD",
+        "paymentAccepted": "Cash, Credit Card",
+        "image": "https://astrocleanings.com/assets/og-image.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Houston",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "areaServed": [
+          {"@type": "City", "name": "Houston"},
+          {"@type": "City", "name": "Katy"},
+          {"@type": "City", "name": "Sugar Land"},
+          {"@type": "City", "name": "The Woodlands"},
+          {"@type": "City", "name": "Cypress"},
+          {"@type": "City", "name": "River Oaks"},
+          {"@type": "City", "name": "Montrose"},
+          {"@type": "City", "name": "Houston Heights"}
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "16:00"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Cleaning Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Standard Home Cleaning",
+                "description": "Regular upkeep and maintenance. Dust top-to-bottom, kitchens, bathrooms, bedrooms, mop and vacuum all floors, change linens."
+              },
+              "priceCurrency": "USD",
+              "description": "$0.11 per square foot"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Deep Clean",
+                "description": "Top-to-bottom inside and out. Everything in Standard plus oven, fridge, baseboards, blinds, cabinets, interior windows."
+              },
+              "priceCurrency": "USD",
+              "description": "$0.18 per square foot"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "White Glove Service",
+                "description": "Airbnb resets, move in/out, post-event cleanup, power washing. Fully custom scope with dedicated crew."
+              },
+              "priceCurrency": "USD",
+              "description": "Custom quote"
+            }
+          ]
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Caio Gustin",
+          "jobTitle": "Owner & President"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I trust someone with my keys?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every crew member is background checked and insured. You get the same person on recurring visits so you build actual trust."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I'm not happy when you're done?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Text us within 24 hours. We come back and re-clean whatever missed the mark — zero cost, no attitude."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast can you get me on the schedule?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most requests we can handle within days. Need it tomorrow? Toggle next-day service in the quote and we'll make it happen."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What areas of Houston do you cover?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Greater Houston including Cypress, Katy, Sugar Land, The Woodlands, River Oaks, Montrose, Heights, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does house cleaning cost in Houston?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard cleaning starts at $0.11 per square foot. A typical 1,800 sqft home runs approximately $198-$234. Deep cleaning is $0.18 per square foot."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
