@@ -1899,7 +1899,206 @@ img, video { display: block; max-width: 100%; }
   margin-top: 8px;
 }
 
-/* Step 5: ZIP + Summary */
+/* Step 2: Contact capture + Step 6: Summary */
+/* Contact capture grid */
+.contact-capture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.contact-capture-grid .input-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--slate);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.contact-capture-grid input {
+  width: 100%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 14px 16px;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-capture-grid input:focus {
+  border-color: var(--accent-glow);
+}
+
+.contact-capture-grid input::placeholder {
+  color: var(--slate);
+  opacity: 0.5;
+}
+
+.contact-capture-grid .input-group-full {
+  grid-column: 1 / -1;
+}
+
+.contact-capture-grid .input-group-half {
+  /* default — takes one grid column */
+}
+
+/* ---- PROMO POPUP OVERLAY ---- */
+.promo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(6, 14, 26, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.promo-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.promo-modal {
+  position: relative;
+  max-width: 420px;
+  width: 90%;
+  background: rgba(10, 22, 40, 0.95);
+  border: 1px solid var(--accent-bright);
+  padding: clamp(32px, 5vw, 48px);
+  text-align: center;
+  box-shadow: 0 0 80px rgba(42, 90, 160, 0.25), 0 0 200px rgba(42, 90, 160, 0.08);
+}
+
+.promo-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--slate);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  line-height: 1;
+}
+
+.promo-close:hover { color: var(--white); }
+
+.promo-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  background: rgba(42, 90, 160, 0.15);
+  border: 1px solid rgba(42, 90, 160, 0.3);
+  padding: 5px 16px;
+  margin-bottom: 20px;
+}
+
+.promo-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.promo-sub {
+  font-size: 1rem;
+  color: var(--white-dim);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.promo-sub strong {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.promo-code-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px dashed var(--accent-bright);
+  padding: 16px 24px;
+  margin-bottom: 24px;
+}
+
+.promo-code-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.promo-code {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 6px;
+  color: var(--green);
+}
+
+.promo-cta {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.promo-fine {
+  font-size: 0.72rem;
+  color: var(--slate);
+  font-weight: 300;
+}
+
+/* Booking confirmed state */
+.booking-confirmed {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.confirmed-icon {
+  margin-bottom: 16px;
+}
+
+.confirmed-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.confirmed-sub {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.confirmed-note {
+  font-size: 0.82rem;
+  color: var(--slate);
+  margin-top: 12px;
+}
+
 .zip-input-wrap {
   margin: 24px 0;
   position: relative;
@@ -2429,6 +2628,8 @@ img, video { display: block; max-width: 100%; }
 }
 
 @media (max-width: 480px) {
+  .contact-capture-grid { grid-template-columns: 1fr; }
+  .contact-capture-grid .input-group-half { grid-column: auto; }
   .freq-grid { grid-template-columns: 1fr; }
   .input-row { grid-template-columns: 1fr; }
   .trust-divider { display: none; }

@@ -270,6 +270,7 @@
             <span class="step-dot" data-step="3">3</span>
             <span class="step-dot" data-step="4">4</span>
             <span class="step-dot" data-step="5">5</span>
+            <span class="step-dot" data-step="6">6</span>
           </div>
         </div>
 
@@ -436,8 +437,55 @@
           </div>
         </div>
 
-        <!-- STEP 2: Home Details -->
+        <!-- STEP 2: Contact Info -->
         <div class="quote-step" data-step="2" id="step2">
+          <h3 class="step-title">Let's get to know you.</h3>
+          <p class="step-sub">So we can send your quote and get you on the schedule.</p>
+          <div class="contact-capture-grid">
+            <div class="input-group input-group-full">
+              <label for="qName">Your Name</label>
+              <input type="text" id="qName" placeholder="First &amp; last name" oninput="quoteState.leadName=this.value">
+            </div>
+            <div class="input-group">
+              <label for="qPhone">Phone</label>
+              <input type="tel" id="qPhone" placeholder="(555) 123-4567" oninput="quoteState.leadPhone=this.value">
+            </div>
+            <div class="input-group">
+              <label for="qEmail">Email</label>
+              <input type="email" id="qEmail" placeholder="you@email.com" oninput="quoteState.leadEmail=this.value">
+            </div>
+            <div class="input-group input-group-full">
+              <label for="qAddress">Street Address</label>
+              <input type="text" id="qAddress" placeholder="123 Main St" oninput="quoteState.leadAddress=this.value">
+            </div>
+            <div class="input-group">
+              <label for="qCity">City</label>
+              <input type="text" id="qCity" placeholder="Houston" value="Houston" oninput="quoteState.leadCity=this.value">
+            </div>
+            <div class="input-group input-group-half">
+              <label for="qState">State</label>
+              <input type="text" id="qState" placeholder="TX" value="TX" maxlength="2" oninput="quoteState.leadState=this.value">
+            </div>
+            <div class="input-group input-group-half">
+              <label for="qZip">ZIP Code</label>
+              <input type="text" id="qZip" placeholder="77429" maxlength="5" oninput="onZipInput(this)">
+              <span class="zip-feedback" id="zipFeedback"></span>
+            </div>
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost btn-back" onclick="prevStep()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back</span>
+            </button>
+            <button class="btn btn-primary btn-next" onclick="nextStep()">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Home Details -->
+        <div class="quote-step" data-step="3" id="step3">
           <h3 class="step-title">Tell us about your home.</h3>
           <p class="step-sub">Bedrooms and bathrooms affect your price too.</p>
           <div class="home-details-grid">
@@ -489,8 +537,8 @@
           </div>
         </div>
 
-        <!-- STEP 3: Frequency -->
-        <div class="quote-step" data-step="3" id="step3">
+        <!-- STEP 4: Frequency -->
+        <div class="quote-step" data-step="4" id="step4">
           <h3 class="step-title">How often do you need us?</h3>
           <p class="step-sub">Recurring clients save up to 25%. Lock in your rate.</p>
           <div class="freq-grid">
@@ -532,8 +580,8 @@
           </div>
         </div>
 
-        <!-- STEP 4: Add-ons -->
-        <div class="quote-step" data-step="4" id="step4">
+        <!-- STEP 5: Add-ons -->
+        <div class="quote-step" data-step="5" id="step5">
           <h3 class="step-title">Any extras?</h3>
           <p class="step-sub">Add what you need. Skip what you don't.</p>
 
@@ -653,13 +701,10 @@
           </div>
         </div>
 
-        <!-- STEP 5: ZIP + Summary -->
-        <div class="quote-step" data-step="5" id="step5">
-          <h3 class="step-title">Almost there &mdash; where's home?</h3>
-          <div class="zip-input-wrap">
-            <input type="text" id="qZip" placeholder="Enter ZIP code" maxlength="5" oninput="onZipInput(this)">
-            <span class="zip-feedback" id="zipFeedback"></span>
-          </div>
+        <!-- STEP 6: Summary + Book -->
+        <div class="quote-step" data-step="6" id="step6">
+          <h3 class="step-title">Your custom quote is ready.</h3>
+          <p class="step-sub">Review your estimate and book your cleaning.</p>
 
           <div class="quote-summary" id="quoteSummary">
             <div class="summary-price-block">
@@ -1118,6 +1163,25 @@
     ]
   }
   </script>
+
+  <!-- ========== 15% OFF FIRST-TIME POPUP ========== -->
+  <div class="promo-overlay" id="promoOverlay">
+    <div class="promo-modal">
+      <button class="promo-close" onclick="closePromo()" aria-label="Close">&times;</button>
+      <div class="promo-badge">FIRST-TIME CLIENT</div>
+      <h3 class="promo-title">Welcome to Astro.</h3>
+      <p class="promo-sub">Get <strong>15% off</strong> your first cleaning when you book today.</p>
+      <div class="promo-code-box">
+        <span class="promo-code-label">Your promo code</span>
+        <span class="promo-code" id="promoCode">ASTRO15</span>
+      </div>
+      <a href="#quote" class="btn btn-primary btn-lg promo-cta" onclick="closePromo()">
+        <span>Claim Your Quote</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="promo-fine">Applied automatically at checkout. Valid for new clients only.</p>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
