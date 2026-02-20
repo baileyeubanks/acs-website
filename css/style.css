@@ -2380,9 +2380,31 @@ img, video { display: block; max-width: 100%; }
 
   .hide-mobile { display: none; }
 
+  .hero-logo-badge {
+    margin-bottom: 4px;
+  }
+
+  .hero-tag {
+    margin-bottom: 10px;
+  }
+
+  .hero-headline {
+    margin-bottom: 4px;
+  }
+
+  .flare-wrap {
+    margin: 0 auto 12px;
+  }
+
+  .hero-sub {
+    margin: 0 auto 20px;
+  }
+
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
+    margin-bottom: 14px;
   }
 
   .hero-actions .btn {
@@ -2391,7 +2413,7 @@ img, video { display: block; max-width: 100%; }
 
   .hero-micro {
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
 
   .hero-micro-dot { display: none; }
@@ -2431,10 +2453,6 @@ img, video { display: block; max-width: 100%; }
 
   .hero-scroll {
     bottom: calc(36px + env(safe-area-inset-bottom));
-  }
-
-  .hero-content {
-    padding-top: calc(80px + env(safe-area-inset-top));
   }
 }
 
@@ -2545,13 +2563,14 @@ html {
     padding: 8px 0;
   }
 
-  /* Hero mobile refinements */
+  /* Hero mobile refinements — clear fixed nav + safe area on notched iPhones */
   .hero-content {
-    padding: 80px 24px 0;
+    padding: 100px 24px 0;
+    padding-top: calc(100px + env(safe-area-inset-top, 0px));
   }
 
   .hero-logo-mark {
-    height: clamp(60px, 18vw, 100px);
+    height: clamp(56px, 14vw, 88px);
   }
 
   .hero-tag {
@@ -2637,17 +2656,18 @@ html {
   }
 
   .hero-logo-mark {
-    height: 60px;
+    height: 50px;
   }
 
   .hero-tag {
     font-size: 8px;
     letter-spacing: 3px;
+    margin-bottom: 6px;
   }
 
   .hero-actions .btn {
     font-size: 0.65rem;
-    padding: 14px 20px;
+    padding: 12px 18px;
   }
 
   .ssc-name {
