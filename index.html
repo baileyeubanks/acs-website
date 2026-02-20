@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astro Cleaning Services | Houston's Premium Home Cleaning</title>
+  <meta name="description" content="Houston's trusted residential cleaning team. Instant quotes, transparent pricing, real people who care about your home.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="nav" class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-text">ASTROCLEANINGS.COM</span>
+      </a>
+      <div class="nav-links">
+        <a href="#quote">Services</a>
+        <a href="#crew">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="sms:3464015841" class="nav-phone-link">Text Us</a>
+        <a href="#quote" class="nav-cta">Get a Quote</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#quote" onclick="closeMobile()">Services</a>
+      <a href="#crew" onclick="closeMobile()">About</a>
+      <a href="#faq" onclick="closeMobile()">FAQ</a>
+      <a href="#quote" onclick="closeMobile()" class="nav-cta-mobile">Get a Quote</a>
+      <a href="sms:3464015841" class="nav-phone-mobile">Text (346) 401-5841</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+    <div class="hero-vignette"></div>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <!-- Cosmic orbital rings -->
+    <svg class="hero-orbits" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="600" cy="600" rx="520" ry="200" stroke="rgba(42,90,160,0.12)" stroke-width="0.8" class="orbit-hero orbit-hero-1"/>
+      <ellipse cx="600" cy="600" rx="420" ry="160" stroke="rgba(61,125,216,0.08)" stroke-width="0.6" class="orbit-hero orbit-hero-2"/>
+      <ellipse cx="600" cy="600" rx="340" ry="130" stroke="rgba(42,90,160,0.06)" stroke-width="0.5" class="orbit-hero orbit-hero-3"/>
+      <!-- Orbiting dots -->
+      <circle r="3" fill="rgba(61,125,216,0.5)">
+        <animateMotion dur="20s" repeatCount="indefinite" path="M 1120,600 A 520,200 0 1 1 80,600 A 520,200 0 1 1 1120,600"/>
+      </circle>
+      <circle r="2" fill="rgba(100,160,240,0.35)">
+        <animateMotion dur="28s" repeatCount="indefinite" path="M 1020,600 A 420,160 0 1 1 180,600 A 420,160 0 1 1 1020,600"/>
+      </circle>
+      <circle r="1.5" fill="rgba(61,125,216,0.25)">
+        <animateMotion dur="16s" repeatCount="indefinite" path="M 940,600 A 340,130 0 1 1 260,600 A 340,130 0 1 1 940,600"/>
+      </circle>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-logo-badge reveal" data-delay="0">
+        <img src="assets/logo-texas.png" alt="Astro Cleaning Services" class="hero-logo-mark">
+      </div>
+      <span class="hero-tag reveal" data-delay="0.1">Houston's Premier Cleaning Crew</span>
+
+      <h1 class="hero-headline reveal" data-delay="0.25">
+        <span>Your Home</span>
+        <span class="line-accent">Our Frontier</span>
+      </h1>
+
+      <!-- Cinematic lens flare — multi-layer bloom -->
+      <div class="flare-wrap reveal" data-delay="0.25">
+        <svg class="frontier-streak" viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <filter id="bloom" x="-50%" y="-200%" width="200%" height="600%" color-interpolation-filters="sRGB">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b1"/>
+              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b2"/>
+              <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="b3"/>
+              <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="b4"/>
+              <feColorMatrix in="b3" type="matrix" result="b3w" values="1.4 0 0 0 0.04  0 1.4 0 0 0.04  0 0 1.6 0 0.08  0 0 0 1 0"/>
+              <feColorMatrix in="b4" type="matrix" result="b4w" values="1.2 0 0 0 0.02  0 1.2 0 0 0.02  0 0 1.3 0 0.04  0 0 0 0.6 0"/>
+              <feMerge>
+                <feMergeNode in="b4w"/>
+                <feMergeNode in="b3w"/>
+                <feMergeNode in="b2"/>
+                <feMergeNode in="b1"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <linearGradient id="streakCore" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4488ff" stop-opacity="0"/>
+              <stop offset="12%" stop-color="#88bbff" stop-opacity="0.15"/>
+              <stop offset="30%" stop-color="#aaddff" stop-opacity="0.5"/>
+              <stop offset="45%" stop-color="#ddeeff" stop-opacity="0.85"/>
+              <stop offset="50%" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset="55%" stop-color="#ffeedd" stop-opacity="0.85"/>
+              <stop offset="70%" stop-color="#aaddff" stop-opacity="0.5"/>
+              <stop offset="88%" stop-color="#88bbff" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#4488ff" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="centerBloom" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+              <stop offset="30%" stop-color="#bbddff" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#4488ff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- Wide atmospheric haze -->
+          <rect x="0" y="10" width="600" height="20" fill="url(#streakCore)" filter="url(#bloom)" opacity="0.5"/>
+          <!-- Core streak — tight, bright -->
+          <ellipse cx="300" cy="20" rx="280" ry="2.5" fill="url(#streakCore)" filter="url(#bloom)"/>
+          <!-- Center hotspot bloom -->
+          <ellipse cx="300" cy="20" rx="60" ry="16" fill="url(#centerBloom)"/>
+        </svg>
+      </div>
+
+      <p class="hero-sub reveal" data-delay="0.45">
+        We don't cut corners &mdash; we clean them.<br class="hide-mobile">
+        Houston's trusted crew. Not a franchise. Just us.
+      </p>
+
+      <!-- Two buttons -->
+      <div class="hero-actions reveal" data-delay="0.6">
+        <a href="#quote" class="btn btn-primary btn-lg">
+          <span>Service Now</span>
+        </a>
+        <a href="#crew" class="btn btn-outline btn-lg">
+          <span>Explore More</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Micro bullets -->
+      <div class="hero-micro reveal" data-delay="0.75">
+        <span>Real Prices. No Surprises.</span>
+        <span class="hero-micro-dot">&bull;</span>
+        <span>Next-Day Service</span>
+        <span class="hero-micro-dot">&bull;</span>
+        <span>Book in 60 Seconds</span>
+      </div>
+    </div>
+
+    <div class="hero-scroll reveal" data-delay="0.9">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO SHOWCASE (Placeholder for AI Video) ========== -->
+  <section class="section section-video-showcase" id="videoShowcase">
+    <div class="video-showcase-inner reveal">
+      <div class="video-placeholder">
+        <div class="video-placeholder-content">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <p class="video-placeholder-text">Coming Soon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item reveal">
+          <span class="trust-num" data-count="500">0</span><span class="trust-plus">+</span>
+          <span class="trust-label">Homes Cleaned</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal" data-delay="0.1">
+          <span class="trust-num" data-count="100">0</span><span class="trust-plus">%</span>
+          <span class="trust-label">Fully Insured</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal" data-delay="0.2">
+          <span class="trust-num" data-count="5">0</span><span class="trust-plus">&#9733;</span>
+          <span class="trust-label">Google Rated</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal" data-delay="0.3">
+          <span class="trust-num" data-count="0">0</span><span class="trust-plus"></span>
+          <span class="trust-label-zero">Surprises on Your Bill</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUOTE CALCULATOR (THE STAR) ========== -->
+  <section class="section section-quote" id="quote">
+    <div class="quote-bg-effects">
+      <div class="quote-orb quote-orb-1"></div>
+      <div class="quote-orb quote-orb-2"></div>
+      <svg class="quote-orbit-svg" viewBox="0 0 800 800" fill="none">
+        <ellipse cx="400" cy="400" rx="380" ry="180" stroke="rgba(26,58,107,0.08)" stroke-width="1" class="orbit-ring orbit-ring-1"/>
+        <ellipse cx="400" cy="400" rx="300" ry="140" stroke="rgba(26,58,107,0.05)" stroke-width="1" class="orbit-ring orbit-ring-3"/>
+        <circle r="4" fill="rgba(42,90,160,0.5)" class="orbit-star">
+          <animateMotion dur="12s" repeatCount="indefinite" path="M 780,400 A 380,180 0 1 1 20,400 A 380,180 0 1 1 780,400"/>
+        </circle>
+        <circle r="3" fill="rgba(61,125,216,0.3)" class="orbit-star">
+          <animateMotion dur="18s" repeatCount="indefinite" path="M 700,400 A 300,140 0 1 1 100,400 A 300,140 0 1 1 700,400"/>
+        </circle>
+      </svg>
+    </div>
+
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center">
+        <span class="section-label">Instant Quote</span>
+        <h2 class="section-title">Your price in <span class="text-gradient">60 seconds.</span></h2>
+        <p class="section-sub" style="margin:8px auto 0">No sales pitch. Just an honest number.</p>
+      </div>
+
+      <div class="quote-wizard reveal" data-delay="0.1" id="quoteWizard">
+        <!-- Progress Bar -->
+        <div class="quote-progress">
+          <div class="quote-progress-bar" id="progressBar"></div>
+          <div class="quote-steps-indicator">
+            <span class="step-dot active" data-step="1">1</span>
+            <span class="step-dot" data-step="2">2</span>
+            <span class="step-dot" data-step="3">3</span>
+            <span class="step-dot" data-step="4">4</span>
+            <span class="step-dot" data-step="5">5</span>
+          </div>
+        </div>
+
+        <!-- STEP 1: Service Type -->
+        <div class="quote-step active" data-step="1" id="step1">
+          <h3 class="step-title">What kind of clean do you need?</h3>
+          <div class="service-select-grid service-select-grid-3">
+            <button class="service-select-card active" data-service="standard" onclick="selectService(this)">
+              <div class="ssc-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <span class="ssc-name">Standard</span>
+              <span class="ssc-desc">Regular upkeep &amp; maintenance</span>
+              <ul class="ssc-includes">
+                <li>Dust top-to-bottom</li>
+                <li>Kitchen, bathrooms, bedrooms</li>
+                <li>Scrub toilets, showers &amp; sinks</li>
+                <li>Mirrors &amp; fixtures</li>
+                <li>Mop &amp; vacuum all floors</li>
+                <li>Change bed linens</li>
+                <li>Hang fresh towels</li>
+              </ul>
+              <span class="ssc-price">$0.11/sqft</span>
+            </button>
+            <button class="service-select-card" data-service="deep" onclick="selectService(this)">
+              <div class="ssc-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <span class="ssc-name">Deep Clean</span>
+              <span class="ssc-desc">Top-to-bottom, inside &amp; out</span>
+              <ul class="ssc-includes ssc-includes-callout">
+                <li>Everything in Standard, plus:</li>
+                <li>Deep clean oven</li>
+                <li>Inside fridge &amp; freezer</li>
+                <li>Baseboards &amp; blinds</li>
+                <li>Interior/exterior cabinets</li>
+                <li>Door &amp; wall faces</li>
+                <li>Interior windows</li>
+              </ul>
+              <span class="ssc-price">$0.18/sqft</span>
+            </button>
+            <button class="service-select-card service-select-card-whiteglove" data-service="whiteglove" onclick="selectService(this)">
+              <div class="ssc-icon ssc-icon-wg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <span class="ssc-name">White Glove</span>
+              <span class="ssc-desc">Airbnb reset &bull; Post-event &bull; Custom</span>
+              <ul class="ssc-includes ssc-includes-wg">
+                <li>Move in / move out</li>
+                <li>Airbnb &amp; rental resets</li>
+                <li>Post-event cleanup</li>
+                <li>Patio &amp; garage blowout</li>
+                <li>Power washing</li>
+                <li>Fully custom scope</li>
+              </ul>
+              <span class="ssc-price ssc-price-wg">Custom Quote</span>
+            </button>
+          </div>
+          <!-- Next-Day Toggle -->
+          <div class="next-day-toggle">
+            <label class="next-day-label">
+              <input type="checkbox" id="nextDayToggle" onchange="toggleNextDay()">
+              <span class="next-day-switch"></span>
+              <span class="next-day-text">
+                <strong>Need it tomorrow?</strong>
+                <span class="next-day-sub">Next-day service +25%</span>
+              </span>
+              <span class="next-day-badge">RUSH</span>
+            </label>
+          </div>
+          <div class="step-nav">
+            <div></div>
+            <button class="btn btn-primary btn-next" onclick="nextStep()">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 1B: WHITE GLOVE CUSTOM (shown only when White Glove selected) -->
+        <div class="quote-step" data-step="1b" id="step1b">
+          <div class="wg-header">
+            <span class="wg-badge">WHITE GLOVE</span>
+            <h3 class="step-title">Turn-key service. No questions asked.</h3>
+            <p class="step-sub">Tell us what you need and we'll handle everything. Airbnb resets, post-event cleanup, large-scale jobs &mdash; you name it, we show up ready.</p>
+          </div>
+
+          <div class="wg-options-grid">
+            <button class="wg-option" data-wg="airbnb" onclick="toggleWgOption(this)">
+              <span class="wg-option-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              </span>
+              <span class="wg-option-name">Airbnb / STR Reset</span>
+            </button>
+            <button class="wg-option" data-wg="postevent" onclick="toggleWgOption(this)">
+              <span class="wg-option-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+              <span class="wg-option-name">Post-Event Cleanup</span>
+            </button>
+            <button class="wg-option" data-wg="deck" onclick="toggleWgOption(this)">
+              <span class="wg-option-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+              </span>
+              <span class="wg-option-name">Large Deck / Patio</span>
+            </button>
+            <button class="wg-option" data-wg="powerwash" onclick="toggleWgOption(this)">
+              <span class="wg-option-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M12 18v4M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M18 12h4M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
+              </span>
+              <span class="wg-option-name">Power Washing</span>
+            </button>
+            <button class="wg-option" data-wg="moveout" onclick="toggleWgOption(this)">
+              <span class="wg-option-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/></svg>
+              </span>
+              <span class="wg-option-name">Move In / Out</span>
+            </button>
+            <button class="wg-option" data-wg="custom" onclick="toggleWgOption(this)">
+              <span class="wg-option-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </span>
+              <span class="wg-option-name">Other / Custom</span>
+            </button>
+          </div>
+
+          <div class="wg-details">
+            <div class="input-group">
+              <label>Crew Size</label>
+              <div class="stepper">
+                <button onclick="stepWgValue('wgCrew', -1)" class="stepper-btn">&minus;</button>
+                <input type="number" id="wgCrew" value="2" min="1" max="10" readonly>
+                <button onclick="stepWgValue('wgCrew', 1)" class="stepper-btn">+</button>
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Hours Needed</label>
+              <div class="stepper">
+                <button onclick="stepWgValue('wgHours', -1)" class="stepper-btn">&minus;</button>
+                <input type="number" id="wgHours" value="4" min="1" max="24" readonly>
+                <button onclick="stepWgValue('wgHours', 1)" class="stepper-btn">+</button>
+              </div>
+            </div>
+            <div class="input-group input-group-full">
+              <label>Tell us what you need</label>
+              <textarea id="wgNotes" class="wg-textarea" rows="3" placeholder="Describe the job — size, condition, special requests. We'll handle the rest."></textarea>
+            </div>
+          </div>
+
+          <div class="wg-pricing-note">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>White Glove includes a <strong>75% premium</strong> for priority scheduling, dedicated crew, and turn-key execution.</span>
+          </div>
+
+          <div class="step-nav">
+            <button class="btn btn-ghost btn-back" onclick="backFromWhiteGlove()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back</span>
+            </button>
+            <button class="btn btn-primary btn-next" onclick="submitWhiteGlove()">
+              <span>Get White Glove Quote</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Home Details -->
+        <div class="quote-step" data-step="2" id="step2">
+          <h3 class="step-title">Tell us about your home.</h3>
+          <p class="step-sub">Bedrooms and bathrooms affect your price too.</p>
+          <div class="home-details-grid">
+            <div class="input-group input-group-large">
+              <label>Square Footage</label>
+              <div class="input-wrap">
+                <input type="number" id="qSqft" value="1800" min="400" max="15000" oninput="updateLivePrice()">
+                <span class="input-suffix">sqft</span>
+              </div>
+              <div class="input-slider-wrap">
+                <input type="range" id="qSqftRange" min="400" max="8000" value="1800" oninput="syncRange('qSqft', this.value)">
+                <div class="slider-labels"><span>400</span><span>2000</span><span>4000</span><span>8000</span></div>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label>Bedrooms</label>
+                <div class="stepper">
+                  <button onclick="stepValue('qBeds', -1)" class="stepper-btn">&minus;</button>
+                  <input type="number" id="qBeds" value="3" min="1" max="10" readonly>
+                  <button onclick="stepValue('qBeds', 1)" class="stepper-btn">+</button>
+                </div>
+                <span class="input-hint">+$12&ndash;$28/room</span>
+              </div>
+              <div class="input-group">
+                <label>Bathrooms</label>
+                <div class="stepper">
+                  <button onclick="stepValue('qBaths', -1)" class="stepper-btn">&minus;</button>
+                  <input type="number" id="qBaths" value="2" min="0.5" max="10" step="0.5" readonly>
+                  <button onclick="stepValue('qBaths', 1)" class="stepper-btn">+</button>
+                </div>
+                <span class="input-hint">Half-baths counted</span>
+              </div>
+            </div>
+          </div>
+          <div class="live-estimate">
+            <span class="live-label">Estimated so far</span>
+            <span class="live-price" id="livePrice">$234</span>
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost btn-back" onclick="prevStep()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back</span>
+            </button>
+            <button class="btn btn-primary btn-next" onclick="nextStep()">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Frequency -->
+        <div class="quote-step" data-step="3" id="step3">
+          <h3 class="step-title">How often do you need us?</h3>
+          <p class="step-sub">Recurring clients save up to 25%. Lock in your rate.</p>
+          <div class="freq-grid">
+            <button class="freq-card" data-freq="once" data-mult="1.0" onclick="selectFreq(this)">
+              <span class="freq-name">One-time</span>
+              <span class="freq-discount"></span>
+              <span class="freq-desc">Single visit, no commitment</span>
+            </button>
+            <button class="freq-card" data-freq="monthly" data-mult="0.90" onclick="selectFreq(this)">
+              <span class="freq-name">Monthly</span>
+              <span class="freq-discount">Save 10%</span>
+              <span class="freq-desc">Once a month</span>
+            </button>
+            <button class="freq-card freq-card-popular" data-freq="biweekly" data-mult="0.85" onclick="selectFreq(this)">
+              <div class="freq-popular-tag">Best Value</div>
+              <span class="freq-name">Bi-Weekly</span>
+              <span class="freq-discount">Save 15%</span>
+              <span class="freq-desc">Every two weeks</span>
+            </button>
+            <button class="freq-card" data-freq="weekly" data-mult="0.75" onclick="selectFreq(this)">
+              <span class="freq-name">Weekly</span>
+              <span class="freq-discount">Save 25%</span>
+              <span class="freq-desc">Same day every week</span>
+            </button>
+          </div>
+          <div class="live-estimate">
+            <span class="live-label">Estimated so far</span>
+            <span class="live-price" id="livePrice2">$234</span>
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost btn-back" onclick="prevStep()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back</span>
+            </button>
+            <button class="btn btn-primary btn-next" onclick="nextStep()">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Add-ons -->
+        <div class="quote-step" data-step="4" id="step4">
+          <h3 class="step-title">Any extras?</h3>
+          <p class="step-sub">Add what you need. Skip what you don't.</p>
+
+          <div class="addons-section">
+            <button class="addon-card" data-addon="turnover" onclick="toggleAddon(this)">
+              <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="addon-name">Airbnb / STR Turnover</span>
+              <span class="addon-price">+$65</span>
+            </button>
+
+            <button class="addon-card" data-addon="moveout" onclick="toggleAddon(this)">
+              <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="addon-name">Move In / Out Package</span>
+              <span class="addon-price">+$85</span>
+            </button>
+
+            <button class="addon-card addon-card-expandable" data-addon="windows" onclick="toggleWindows(this)">
+              <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="addon-name">Interior Windows</span>
+              <span class="addon-price">$12/window</span>
+            </button>
+            <div class="addon-sub-options" id="windowSubOptions" style="display:none">
+              <div class="addon-sub-row">
+                <label>How many windows?</label>
+                <div class="mini-stepper">
+                  <button onclick="setWindowCount(quoteState.windowCount-1)" class="stepper-btn">&minus;</button>
+                  <input type="number" id="windowCountInput" value="6" min="1" max="50" onchange="setWindowCount(this.value)">
+                  <button onclick="setWindowCount(quoteState.windowCount+1)" class="stepper-btn">+</button>
+                </div>
+              </div>
+              <label class="addon-checkbox-row">
+                <input type="checkbox" id="highReachToggle" onchange="toggleHighReach()">
+                <span>Hard-to-reach / above 6ft (+$45)</span>
+              </label>
+            </div>
+
+            <button class="addon-card addon-card-expandable" data-addon="pets" onclick="togglePets(this)">
+              <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="addon-name">Pets / Heavy Mess</span>
+              <span class="addon-price">From $15</span>
+            </button>
+            <div class="addon-sub-options" id="petSubOptions" style="display:none">
+              <div class="addon-sub-row">
+                <label>How many pets?</label>
+                <div class="mini-stepper">
+                  <button onclick="setPetCount(quoteState.petCount-1)" class="stepper-btn">&minus;</button>
+                  <input type="number" id="petCountInput" value="1" min="1" max="10" onchange="setPetCount(this.value)">
+                  <button onclick="setPetCount(quoteState.petCount+1)" class="stepper-btn">+</button>
+                </div>
+              </div>
+              <span class="addon-pricing-note">$15 first pet + $10 each additional</span>
+            </div>
+
+            <button class="addon-card addon-card-expandable" data-addon="carpet" onclick="toggleCarpet(this)">
+              <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <span class="addon-name">Carpet Steam Clean</span>
+              <span class="addon-price">$0.25/sqft</span>
+            </button>
+            <div class="addon-sub-options" id="carpetSubOptions" style="display:none">
+              <div class="addon-sub-row">
+                <label>Carpet area (sqft)</label>
+                <div class="mini-stepper mini-stepper-wide">
+                  <input type="number" id="carpetSqftInput" value="400" min="50" max="5000" onchange="setCarpetSqft(this.value)">
+                  <span class="input-suffix">sqft</span>
+                </div>
+              </div>
+              <span class="addon-pricing-note">Minimum $35</span>
+            </div>
+
+            <div class="addons-grid-simple">
+              <button class="addon-card" data-addon="fridge" onclick="toggleAddon(this)">
+                <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="addon-name">Inside Fridge</span>
+                <span class="addon-price">+$35</span>
+              </button>
+              <button class="addon-card" data-addon="oven" onclick="toggleAddon(this)">
+                <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="addon-name">Inside Oven</span>
+                <span class="addon-price">+$45</span>
+              </button>
+              <button class="addon-card" data-addon="ceiling-fans" onclick="toggleAddon(this)">
+                <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="addon-name">Ceiling Fans</span>
+                <span class="addon-price">+$15</span>
+              </button>
+              <button class="addon-card" data-addon="patio" onclick="toggleAddon(this)">
+                <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="addon-name">Patio Cleaning</span>
+                <span class="addon-price">+$55</span>
+              </button>
+              <button class="addon-card" data-addon="power-wash" onclick="toggleAddon(this)">
+                <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="addon-name">Power Washing</span>
+                <span class="addon-price">+$85</span>
+              </button>
+              <button class="addon-card" data-addon="grout" onclick="toggleAddon(this)">
+                <div class="addon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <span class="addon-name">Grout Cleaning</span>
+                <span class="addon-price">+$75</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="live-estimate">
+            <span class="live-label">Estimated so far</span>
+            <span class="live-price" id="livePrice3">$234</span>
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost btn-back" onclick="prevStep()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back</span>
+            </button>
+            <button class="btn btn-primary btn-next" onclick="nextStep()">
+              <span>Next</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 5: ZIP + Summary -->
+        <div class="quote-step" data-step="5" id="step5">
+          <h3 class="step-title">Almost there &mdash; where's home?</h3>
+          <div class="zip-input-wrap">
+            <input type="text" id="qZip" placeholder="Enter ZIP code" maxlength="5" oninput="onZipInput(this)">
+            <span class="zip-feedback" id="zipFeedback"></span>
+          </div>
+
+          <div class="quote-summary" id="quoteSummary">
+            <div class="summary-price-block">
+              <span class="summary-label">Your Estimate</span>
+              <div class="summary-price" id="summaryPrice">$234</div>
+              <span class="summary-range" id="summaryRange">Typical range: $199 &ndash; $269</span>
+            </div>
+            <div class="summary-breakdown">
+              <div class="breakdown-row">
+                <span id="bkServiceName">Standard Clean</span>
+                <span id="bkBase">$234.00</span>
+              </div>
+              <div class="breakdown-row" id="bkNextDayRow" style="display:none">
+                <span>Next-day rush (+25%)</span>
+                <span id="bkNextDay">+$58.50</span>
+              </div>
+              <div class="breakdown-row" id="bkFreqRow" style="display:none">
+                <span id="bkFreqLabel">Bi-weekly discount</span>
+                <span id="bkFreq" class="text-green">-$35.10</span>
+              </div>
+              <div class="breakdown-row" id="bkWindowsRow" style="display:none">
+                <span id="bkWindowsLabel">6 windows</span>
+                <span id="bkWindows">+$72.00</span>
+              </div>
+              <div class="breakdown-row" id="bkPetsRow" style="display:none">
+                <span id="bkPetsLabel">1 pet</span>
+                <span id="bkPets">+$15.00</span>
+              </div>
+              <div class="breakdown-row" id="bkCarpetRow" style="display:none">
+                <span id="bkCarpetLabel">Carpet (400 sqft)</span>
+                <span id="bkCarpet">+$100.00</span>
+              </div>
+              <div class="breakdown-row" id="bkAddonsRow" style="display:none">
+                <span>Add-on services</span>
+                <span id="bkAddons">+$0.00</span>
+              </div>
+              <div class="breakdown-row" id="bkZipRow" style="display:none">
+                <span id="bkZipLabel">Area adjustment</span>
+                <span id="bkZip">+$0.00</span>
+              </div>
+              <div class="breakdown-row" id="bkSeasonRow" style="display:none">
+                <span id="bkSeasonLabel">Seasonal</span>
+                <span id="bkSeason">+$0.00</span>
+              </div>
+              <div class="breakdown-divider"></div>
+              <div class="breakdown-row breakdown-total">
+                <span>Estimated Total</span>
+                <span id="bkTotal">$234.00</span>
+              </div>
+              <div class="breakdown-hours">
+                <span id="bkHours">~5.6 hrs estimated</span>
+              </div>
+            </div>
+            <div class="summary-trust">
+              <div class="trust-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Fully insured</span>
+              </div>
+              <div class="trust-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Satisfaction guaranteed</span>
+              </div>
+              <div class="trust-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Easy reschedule</span>
+              </div>
+            </div>
+            <div class="summary-actions">
+              <button class="btn btn-primary btn-lg" onclick="submitQuoteLead()">
+                <span>Book Now</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <div class="summary-actions-row">
+                <button class="btn btn-outline" onclick="downloadQuotePDF()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Download PDF</span>
+                </button>
+                <a href="sms:3464015841" class="btn btn-outline">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  <span>Text Us</span>
+                </a>
+              </div>
+              <a href="sms:3464015841" class="btn btn-ghost">
+                <span>Or text &mdash; (346) 401-5841</span>
+              </a>
+            </div>
+          </div>
+          <div class="step-nav">
+            <button class="btn btn-ghost btn-back" onclick="prevStep()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Back</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO REEL ========== -->
+  <section class="section section-reel">
+    <div class="reel-wrap reveal">
+      <video class="reel-video" autoplay muted loop playsinline>
+        <source src="assets/reel.mp4" type="video/mp4">
+      </video>
+      <div class="reel-overlay"></div>
+      <div class="reel-content">
+        <h2 class="reel-title">We don't cut corners.<br>We clean them.</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CREW ========== -->
+  <section class="section section-crew" id="crew">
+    <div class="container">
+      <div class="crew-header reveal">
+        <span class="section-label">The Crew</span>
+        <h2 class="section-title">The people behind<br><span class="text-gradient">every clean.</span></h2>
+        <p class="crew-desc">Not a franchise. Not a call center. Just a tight-knit Houston crew who takes pride in every home we touch.</p>
+      </div>
+
+      <div class="crew-profiles">
+        <!-- Caio -->
+        <div class="crew-profile reveal" data-delay="0.1">
+          <div class="crew-photo-card">
+            <img src="assets/crew-2.jpg" alt="Caio Gustin — Owner &amp; President" class="crew-photo">
+          </div>
+          <div class="crew-quote-block">
+            <div class="crew-quote-mark">&ldquo;</div>
+            <p class="crew-quote">Cleaning is about more than floors and counters &mdash; it's about building a better life. I came to the U.S. from Brazil with a dream to work hard, create something of my own, and make a difference for the people around me. My sister and I started Astro to bring comfort to our clients, build real relationships, and keep learning as we grow. Your home should feel alive and cared for &mdash; just like the dream that started ours.</p>
+            <div class="crew-signature">
+              <img src="assets/signature-caio.png" alt="Caio Gustin signature" class="crew-sig-img">
+              <div class="crew-sig-info">
+                <span class="crew-sig-name">Caio Gustin</span>
+                <span class="crew-sig-title">Owner &amp; President</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kailany -->
+        <div class="crew-profile crew-profile-reverse reveal" data-delay="0.2">
+          <div class="crew-photo-card">
+            <img src="assets/crew-1.jpg" alt="Kailany Braga — Operations Lead" class="crew-photo">
+          </div>
+          <div class="crew-quote-block">
+            <div class="crew-quote-mark">&ldquo;</div>
+            <p class="crew-quote">I've always believed that the way you care for someone's home says everything about who you are. Every detail matters. When I walk into a space, I see what people live in every day &mdash; and I want to make it feel like a reset. This isn't just a job for us. It's how we show up for Houston.</p>
+            <div class="crew-signature">
+              <span class="crew-sig-handwritten">Kailany Braga</span>
+              <div class="crew-sig-info">
+                <span class="crew-sig-name">Kailany Braga</span>
+                <span class="crew-sig-title">Operations Lead</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="section section-about" id="about">
+    <div class="container">
+      <div class="about-content-centered">
+        <span class="section-label reveal">About Us</span>
+        <h2 class="section-title reveal" data-delay="0.1">
+          Not a franchise.<br>
+          <span class="text-gradient">Just us.</span>
+        </h2>
+        <div class="about-text-block reveal" data-delay="0.2">
+          <p>We started Astro because we got tired of cleaning companies that treat your home like a checklist. We're a tight-knit Houston crew &mdash; the kind of people you'd actually trust with your keys.</p>
+          <p>Every home gets the same attention: thorough, honest, no-rush work from people who take pride in what they do. You'll know us by name. That's kind of the point.</p>
+        </div>
+        <div class="about-values reveal" data-delay="0.3">
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Background checked</span>
+          </div>
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Fully insured</span>
+          </div>
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Same crew every visit</span>
+          </div>
+          <div class="value-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Family-owned since day one</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="section section-faq" id="faq">
+    <div class="container container-narrow">
+      <div class="section-header reveal">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Straight answers.</h2>
+      </div>
+      <div class="faq-list reveal" data-delay="0.1">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I actually trust someone with my keys?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Every crew member is background checked and insured. You get the same person on recurring visits &mdash; so you build actual trust, not just hope for the best with a stranger every time.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What if I'm not happy when you're done?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Text us within 24 hours. We come back and re-clean whatever missed the mark &mdash; zero cost, no attitude. It rarely happens because we actually talk through expectations upfront.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Do you judge the state of the house?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Zero. We see homes at their worst all the time &mdash; life happens. We're not here to judge. We're here to take the problem off your plate.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How do you keep quality consistent every time?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Same crew member on recurring visits, detailed walkthrough checklist, and you'll know us by name. If something's ever off, you tell us directly &mdash; no call center middleman.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How fast can you get me on the schedule?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>We're not overbooked like franchises. Most requests we can handle within days. Need it tomorrow? Toggle next-day service in the quote and we'll make it happen.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What if I have my own products I'd prefer?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>That's fine. We use professional-grade eco-friendly products by default, but if you have preferences or sensitivities, just let us know and we'll use yours.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What if I need to reschedule last minute?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Life changes. Give us notice when you can &mdash; 24 hours is ideal. We're not the type to nickel-and-dime you on cancellation fees.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What areas of Houston do you cover?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-answer"><p>Greater Houston &mdash; Cypress, Katy, Sugar Land, The Woodlands, River Oaks, Montrose, Heights, and more. Enter your ZIP in the quote engine and we'll confirm.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER CTA ========== -->
+  <section class="section section-footer-cta">
+    <div class="container">
+      <div class="footer-cta-content reveal">
+        <h2 class="footer-cta-title">Ready for a cleaner home?</h2>
+        <p class="footer-cta-sub">Get your quote in under a minute. Or just text us &mdash; we're fast.</p>
+        <div class="footer-cta-actions">
+          <a href="#quote" class="btn btn-primary btn-lg">
+            <span>See Your Instant Quote</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="sms:3464015841" class="btn btn-ghost btn-lg">
+            <span>Text (346) 401-5841</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <span class="footer-logo-text">ASTROCLEANINGS.COM</span>
+          </div>
+          <p class="footer-tagline">Houston's trusted cleaning crew.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#quote">Services</a>
+          <a href="#crew">About</a>
+          <a href="#quote">Get a Quote</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-contact">
+          <a href="sms:3464015841">Text (346) 401-5841</a>
+          <a href="mailto:caio@astrocleanings.com">caio@astrocleanings.com</a>
+          <p>Houston, TX</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Astro Cleaning Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Ambient Audio -->
+  <audio id="ambientAudio" loop preload="auto">
+    <source src="assets/ambient.mp3" type="audio/mpeg">
+  </audio>
+  <button class="audio-toggle" id="audioToggle" onclick="toggleAudio()" aria-label="Toggle ambient audio">
+    <svg class="audio-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg class="audio-icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+
+  <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/quote-engine.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
