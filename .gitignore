@@ -1,0 +1,13 @@
+# Original uncompressed assets (keep optimized versions only)
+assets/*-original.*
+assets/caio-hero.png
+assets/cosmic-living.jpg
+assets/logo-blue-bg.png
+assets/logo-dark.png
+assets/logo-light.png
+assets/logo-mark-dark.png
+assets/logo.jpg
+
+# OS
+.DS_Store
+Thumbs.db

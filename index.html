@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Astro Cleaning Services | Houston's Premium Home Cleaning</title>
   <meta name="description" content="Houston's trusted residential cleaning team. Instant quotes, transparent pricing, real people who care about your home.">
+  <meta name="theme-color" content="#060e1a">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preload" href="assets/hero.mp4" as="video" type="video/mp4">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -724,7 +729,7 @@
   <!-- ========== VIDEO REEL ========== -->
   <section class="section section-reel">
     <div class="reel-wrap reveal">
-      <video class="reel-video" autoplay muted loop playsinline>
+      <video class="reel-video" autoplay muted loop playsinline preload="none">
         <source src="assets/reel.mp4" type="video/mp4">
       </video>
       <div class="reel-overlay"></div>
@@ -747,13 +752,13 @@
         <!-- Caio -->
         <div class="crew-profile reveal" data-delay="0.1">
           <div class="crew-photo-card">
-            <img src="assets/crew-2.jpg" alt="Caio Gustin — Owner &amp; President" class="crew-photo">
+            <img src="assets/crew-2.jpg" alt="Caio Gustin — Owner &amp; President" class="crew-photo" loading="lazy">
           </div>
           <div class="crew-quote-block">
             <div class="crew-quote-mark">&ldquo;</div>
             <p class="crew-quote">Cleaning is about more than floors and counters &mdash; it's about building a better life. I came to the U.S. from Brazil with a dream to work hard, create something of my own, and make a difference for the people around me. My sister and I started Astro to bring comfort to our clients, build real relationships, and keep learning as we grow. Your home should feel alive and cared for &mdash; just like the dream that started ours.</p>
             <div class="crew-signature">
-              <img src="assets/signature-caio.png" alt="Caio Gustin signature" class="crew-sig-img">
+              <img src="assets/signature-caio.png" alt="Caio Gustin signature" class="crew-sig-img" loading="lazy">
               <div class="crew-sig-info">
                 <span class="crew-sig-name">Caio Gustin</span>
                 <span class="crew-sig-title">Owner &amp; President</span>
@@ -765,7 +770,7 @@
         <!-- Kailany -->
         <div class="crew-profile crew-profile-reverse reveal" data-delay="0.2">
           <div class="crew-photo-card">
-            <img src="assets/crew-1.jpg" alt="Kailany Braga — Operations Lead" class="crew-photo">
+            <img src="assets/crew-1.jpg" alt="Kailany Braga — Operations Lead" class="crew-photo" loading="lazy">
           </div>
           <div class="crew-quote-block">
             <div class="crew-quote-mark">&ldquo;</div>
@@ -943,7 +948,7 @@
   </button>
 
   <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
   <script src="js/quote-engine.js"></script>
   <script src="js/animations.js"></script>
 </body>

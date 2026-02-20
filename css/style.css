@@ -2399,3 +2399,342 @@ img, video { display: block; max-width: 100%; }
   .trust-items { gap: 20px; }
   .quote-step { min-height: auto; }
 }
+
+/* ---------- iOS / MOBILE HARDENING ---------- */
+
+/* Safe area insets for notched devices */
+@supports (padding: env(safe-area-inset-top)) {
+  .nav {
+    padding-top: env(safe-area-inset-top);
+    padding-left: max(env(safe-area-inset-left), clamp(20px, 5vw, 60px));
+    padding-right: max(env(safe-area-inset-right), clamp(20px, 5vw, 60px));
+  }
+
+  .footer {
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  }
+
+  .audio-toggle {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    right: calc(24px + env(safe-area-inset-right));
+  }
+
+  .hero-scroll {
+    bottom: calc(36px + env(safe-area-inset-bottom));
+  }
+}
+
+/* iOS overscroll rubber-banding fix */
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+/* iOS tap highlight removal */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS input zoom prevention — keep font-size >= 16px on inputs */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* iOS button appearance reset */
+button, input, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+/* Prevent text size adjust on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* iOS fixed position + backdrop-filter fix */
+@supports (-webkit-touch-callout: none) {
+  .nav.scrolled {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Force GPU layer for space layer on iOS */
+  .space-layer {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+  }
+
+  /* Reduce particle count impact on iOS */
+  .particle {
+    will-change: transform, opacity;
+  }
+}
+
+/* Touch target minimum 44px (Apple HIG) */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 48px;
+    padding: 14px 28px;
+  }
+
+  .stepper-btn {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .faq-question {
+    min-height: 52px;
+    padding: 16px 20px;
+  }
+
+  .nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .addon-card {
+    min-height: 52px;
+    padding: 14px 16px;
+  }
+
+  .wg-option {
+    min-height: 72px;
+    padding: 16px 10px;
+  }
+
+  .audio-toggle {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Mobile nav full-screen overlay */
+  .nav-mobile {
+    padding: 24px 20px 40px;
+    gap: 20px;
+  }
+
+  .nav-mobile a {
+    font-size: 1.1rem;
+    padding: 8px 0;
+  }
+
+  /* Hero mobile refinements */
+  .hero-content {
+    padding: 0 24px;
+  }
+
+  .hero-logo-mark {
+    height: clamp(60px, 18vw, 100px);
+  }
+
+  .hero-tag {
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+
+  .hero-sub {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .hero-micro span {
+    font-size: 9px;
+  }
+
+  /* Quote wizard mobile padding */
+  .quote-wizard {
+    padding: clamp(20px, 4vw, 36px);
+  }
+
+  .step-title {
+    font-size: clamp(1rem, 4.5vw, 1.3rem);
+  }
+
+  /* Crew section mobile */
+  .crew-quote {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .crew-sig-handwritten {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+  }
+
+  /* Trust bar mobile */
+  .trust-bar {
+    padding: 32px 0;
+  }
+
+  .trust-num {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  /* Section padding mobile */
+  .section {
+    padding: clamp(60px, 10vw, 100px) 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+  }
+
+  /* Summary on mobile */
+  .summary-price {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  .summary-breakdown {
+    padding: 20px 16px;
+  }
+
+  .summary-actions {
+    padding: 0 16px 24px;
+  }
+
+  /* Footer mobile */
+  .footer-cta-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+}
+
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .hero-headline {
+    font-size: clamp(36px, 11vw, 56px);
+    letter-spacing: 2px;
+  }
+
+  .hero-headline .line-accent {
+    letter-spacing: 3px;
+    -webkit-text-stroke: 1.5px rgba(70, 140, 255, 0.55);
+  }
+
+  .hero-logo-mark {
+    height: 60px;
+  }
+
+  .hero-tag {
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .hero-actions .btn {
+    font-size: 0.65rem;
+    padding: 14px 20px;
+  }
+
+  .ssc-name {
+    font-size: 0.95rem;
+  }
+
+  .ssc-includes li {
+    font-size: 0.6rem;
+  }
+
+  .wg-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vw;
+    padding: 60px 0;
+  }
+
+  .hero-content {
+    max-width: 600px;
+  }
+
+  .hero-logo-mark {
+    height: 60px;
+  }
+
+  .hero-headline {
+    font-size: clamp(32px, 8vw, 60px);
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+}
+
+/* ---------- PERFORMANCE: REDUCE MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .space-layer,
+  .ambient-flare,
+  .hero-orbits {
+    display: none;
+  }
+
+  .frontier-streak {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}
+
+/* ---------- PERFORMANCE: GPU COMPOSITING HINTS ---------- */
+.hero-video {
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+.ambient-flare {
+  will-change: opacity, transform;
+}
+
+.hero-orbits {
+  will-change: auto;
+}
+
+/* Disable costly effects on low-power devices */
+@media (max-width: 768px) {
+  .hero-grain {
+    display: none;
+  }
+
+  .hero-orbits {
+    display: none;
+  }
+
+  .ambient-flare {
+    display: none;
+  }
+
+  .ambient-glow {
+    display: none;
+  }
+
+  .quote-orb {
+    display: none;
+  }
+
+  .particle {
+    display: none;
+  }
+}
