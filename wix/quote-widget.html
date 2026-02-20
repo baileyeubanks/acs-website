@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astro Cleaning — Instant Quote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   ASTRO QUOTE WIDGET — Wix Embeddable
+   Self-contained. Drop into Wix HTML embed.
+   ============================================ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --blue: #174197;
+  --blue-light: #2563eb;
+  --blue-glow: rgba(23,65,151,0.4);
+  --navy: #060A12;
+  --navy-light: #0c1220;
+  --slate: #5D6C73;
+  --off-white: #F1F6FB;
+  --white: #fff;
+  --green: #34d399;
+  --green-dim: rgba(52,211,153,0.15);
+  --yellow: #ffab00;
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-hover: rgba(255,255,255,0.07);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+
+html { -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  background: var(--navy);
+  color: var(--off-white);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- WIDGET WRAPPER ---------- */
+.widget {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px);
+  position: relative;
+}
+
+.widget-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.widget-label {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 12px;
+}
+
+.widget-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+
+.widget-title .grad {
+  background: linear-gradient(135deg, var(--blue-light), #60a5fa, var(--blue-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.widget-sub {
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+
+/* ---------- WIZARD ---------- */
+.wizard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 40px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Progress */
+.progress { position: relative; margin-bottom: 28px; }
+.progress-bar {
+  position: absolute; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
+  border-radius: 3px; transition: width 0.5s var(--ease); width: 20%;
+}
+.progress-dots {
+  display: flex; justify-content: space-between; padding-top: 14px;
+}
+.dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 700; font-family: var(--font-display);
+  border: 1px solid var(--glass-border); color: var(--slate);
+  transition: all 0.3s var(--ease);
+}
+.dot.active { background: var(--blue); border-color: var(--blue); color: var(--white); }
+.dot.done { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+
+/* Steps */
+.step { display: none; animation: fadeIn 0.4s var(--ease); }
+.step.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700; margin-bottom: 6px; letter-spacing: -0.02em;
+}
+.step-sub { color: var(--slate); font-size: 0.85rem; margin-bottom: 20px; }
+
+.step-nav { display: flex; justify-content: space-between; margin-top: 28px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.85rem;
+  padding: 12px 24px; border-radius: 100px; border: none; cursor: pointer;
+  transition: all 0.3s var(--ease); white-space: nowrap;
+}
+.btn-primary { background: var(--blue); color: var(--white); }
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 4px 20px var(--blue-glow); }
+.btn-outline { background: transparent; color: var(--off-white); border: 1px solid var(--glass-border); }
+.btn-outline:hover { background: var(--glass-hover); }
+.btn-ghost { background: transparent; color: var(--slate); padding: 12px 16px; }
+.btn-ghost:hover { color: var(--off-white); }
+.btn-lg { padding: 16px 32px; font-size: 0.95rem; }
+
+/* ---------- STEP 1: Service Cards ---------- */
+.svc-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px;
+}
+.svc-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 6px; padding: 18px 10px; border-radius: 14px;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  cursor: pointer; transition: all 0.3s var(--ease);
+  font-family: var(--font-body); color: var(--off-white);
+}
+.svc-card:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.12); }
+.svc-card.active { border-color: var(--blue-light); background: rgba(37,99,235,0.1); box-shadow: 0 0 16px rgba(37,99,235,0.1); }
+.svc-card svg { color: var(--blue-light); }
+.svc-name { font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; }
+.svc-desc { font-size: 0.65rem; color: var(--slate); line-height: 1.3; }
+.svc-rate { font-size: 0.65rem; color: var(--blue-light); font-weight: 600; }
+
+/* Turnover sub-options */
+.turnover-opts { display: none; margin-top: 12px; animation: fadeIn 0.3s var(--ease); }
+.turnover-opts.show { display: flex; flex-wrap: wrap; gap: 8px; }
+.turnover-chip {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 8px; font-size: 0.78rem;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  cursor: pointer; color: var(--off-white); transition: all 0.2s;
+}
+.turnover-chip:hover { background: var(--glass-hover); }
+.turnover-chip.active { border-color: var(--green); background: var(--green-dim); }
+.turnover-chip input { display: none; }
+
+/* Next day */
+.next-day {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; border-radius: 12px;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  cursor: pointer; transition: all 0.3s;
+}
+.next-day.on { border-color: rgba(255,171,0,0.4); background: rgba(255,171,0,0.06); }
+.next-day input { display: none; }
+.nd-switch {
+  width: 40px; height: 22px; border-radius: 11px; background: var(--glass-border);
+  position: relative; flex-shrink: 0; transition: background 0.3s;
+}
+.nd-switch::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 16px; height: 16px; border-radius: 50%; background: var(--off-white);
+  transition: transform 0.3s var(--ease);
+}
+.next-day.on .nd-switch { background: var(--yellow); }
+.next-day.on .nd-switch::after { transform: translateX(18px); }
+.nd-text { flex: 1; }
+.nd-text strong { font-size: 0.85rem; display: block; }
+.nd-text span { font-size: 0.7rem; color: var(--slate); }
+.nd-badge {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--yellow); background: rgba(255,171,0,0.12);
+  padding: 3px 9px; border-radius: 100px; opacity: 0.4; transition: opacity 0.3s;
+}
+.next-day.on .nd-badge { opacity: 1; }
+
+/* ---------- STEP 2: Home Details ---------- */
+.home-grid { display: flex; flex-direction: column; gap: 20px; }
+.input-group label {
+  display: block; font-size: 0.75rem; font-weight: 600; color: var(--slate);
+  margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.input-wrap { position: relative; }
+.input-wrap input[type="number"] {
+  width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 10px; padding: 12px 55px 12px 14px; color: var(--white);
+  font-size: 1rem; font-family: var(--font-display); font-weight: 600; outline: none;
+  transition: border-color 0.3s;
+}
+.input-wrap input:focus { border-color: var(--blue-light); }
+.input-suffix {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 0.75rem; color: var(--slate);
+}
+.range-wrap { margin-top: 10px; }
+.range-wrap input[type="range"] {
+  -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px;
+  background: var(--glass-border); outline: none;
+}
+.range-wrap input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--blue-light); cursor: pointer; border: 3px solid var(--navy);
+}
+.range-labels { display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--slate); margin-top: 4px; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stepper {
+  display: flex; align-items: center;
+  border: 1px solid var(--glass-border); border-radius: 10px; overflow: hidden;
+  background: var(--glass-bg);
+}
+.stepper input {
+  width: 50px; text-align: center; background: transparent; border: none;
+  color: var(--white); font-size: 1rem; font-family: var(--font-display);
+  font-weight: 600; padding: 10px 0; outline: none;
+}
+.stepper button {
+  padding: 10px 14px; background: transparent; border: none; color: var(--off-white);
+  font-size: 1.1rem; cursor: pointer; transition: background 0.2s; font-family: var(--font-display);
+}
+.stepper button:hover { background: var(--glass-hover); }
+.input-hint { display: block; font-size: 0.65rem; color: var(--slate); margin-top: 4px; text-align: center; }
+
+/* Live estimate */
+.live-est {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; border-radius: 10px;
+  background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.15);
+  margin-top: 20px;
+}
+.live-est .label { font-size: 0.75rem; color: var(--slate); }
+.live-est .price {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+  transition: transform 0.3s var(--ease);
+}
+
+/* ---------- STEP 3: Frequency ---------- */
+.freq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.freq-card {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 3px; padding: 20px 14px; border-radius: 14px;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  cursor: pointer; transition: all 0.3s var(--ease); color: var(--off-white);
+}
+.freq-card:hover { background: var(--glass-hover); }
+.freq-card.active { border-color: var(--blue-light); background: rgba(37,99,235,0.1); }
+.freq-card.popular { border-color: rgba(52,211,153,0.3); }
+.freq-tag {
+  position: absolute; top: -9px;
+  background: var(--green); color: var(--navy);
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 2px 9px; border-radius: 100px;
+}
+.freq-name { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; }
+.freq-save { font-size: 0.75rem; color: var(--green); font-weight: 600; min-height: 18px; }
+.freq-desc { font-size: 0.68rem; color: var(--slate); }
+
+/* ---------- STEP 4: Addons ---------- */
+.addons-list { display: flex; flex-direction: column; gap: 6px; }
+.addon {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 16px; border-radius: 10px;
+  border: 1px solid var(--glass-border); background: var(--glass-bg);
+  cursor: pointer; transition: all 0.3s var(--ease); color: var(--off-white);
+}
+.addon:hover { background: var(--glass-hover); }
+.addon.active { border-color: var(--green); background: var(--green-dim); }
+.addon-chk {
+  width: 22px; height: 22px; border-radius: 5px;
+  border: 1px solid var(--glass-border); display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s;
+}
+.addon.active .addon-chk { background: var(--green); border-color: var(--green); color: var(--navy); }
+.addon-chk svg { opacity: 0; transition: opacity 0.2s; }
+.addon.active .addon-chk svg { opacity: 1; }
+.addon-name { flex: 1; font-size: 0.82rem; font-weight: 500; }
+.addon-price { font-size: 0.75rem; color: var(--blue-light); font-weight: 600; flex-shrink: 0; }
+
+/* Sub options */
+.sub-opts {
+  display: none; flex-direction: column; gap: 10px;
+  padding: 12px 16px; margin-top: -2px;
+  background: rgba(37,99,235,0.04); border: 1px solid rgba(37,99,235,0.1);
+  border-top: none; border-radius: 0 0 10px 10px;
+  animation: fadeIn 0.3s var(--ease);
+}
+.sub-opts.show { display: flex; }
+.sub-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.sub-row label { font-size: 0.75rem; color: var(--slate); }
+.mini-step {
+  display: flex; align-items: center;
+  border: 1px solid var(--glass-border); border-radius: 7px; overflow: hidden;
+  background: var(--glass-bg);
+}
+.mini-step input {
+  width: 44px; text-align: center; background: transparent; border: none;
+  color: var(--white); font-size: 0.85rem; font-family: var(--font-display);
+  font-weight: 600; padding: 7px 0; outline: none;
+}
+.mini-step button {
+  padding: 7px 10px; background: transparent; border: none; color: var(--off-white);
+  font-size: 0.95rem; cursor: pointer; font-family: var(--font-display);
+}
+.mini-step button:hover { background: var(--glass-hover); }
+.sub-check {
+  display: flex; align-items: center; gap: 7px; font-size: 0.75rem; cursor: pointer; color: var(--off-white);
+}
+.sub-check input { accent-color: var(--blue-light); width: 15px; height: 15px; }
+.sub-note { font-size: 0.65rem; color: var(--slate); }
+.mini-input {
+  width: 70px; text-align: center; background: var(--glass-bg);
+  border: 1px solid var(--glass-border); border-radius: 7px;
+  color: var(--white); font-size: 0.85rem; font-family: var(--font-display);
+  font-weight: 600; padding: 7px 8px; outline: none;
+}
+.mini-input:focus { border-color: var(--blue-light); }
+
+.addons-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px;
+}
+
+/* ---------- STEP 5: ZIP + Contact + Summary ---------- */
+.zip-wrap { margin-bottom: 16px; }
+.zip-wrap input {
+  width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 10px; padding: 14px 18px; color: var(--white);
+  font-size: 1.1rem; font-family: var(--font-display); font-weight: 600;
+  letter-spacing: 0.1em; text-align: center; outline: none; transition: border-color 0.3s;
+}
+.zip-wrap input:focus { border-color: var(--blue-light); }
+.zip-fb { display: block; text-align: center; font-size: 0.75rem; margin-top: 6px; min-height: 18px; color: var(--green); }
+
+/* Contact capture */
+.contact-fields {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;
+}
+.contact-fields .full { grid-column: 1 / -1; }
+.cf-input {
+  width: 100%; background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 10px; padding: 12px 14px; color: var(--white);
+  font-size: 0.88rem; font-family: var(--font-body); outline: none;
+  transition: border-color 0.3s;
+}
+.cf-input:focus { border-color: var(--blue-light); }
+.cf-input::placeholder { color: var(--slate); }
+.cf-note { font-size: 0.65rem; color: var(--slate); text-align: center; margin-bottom: 16px; }
+
+/* Summary */
+.summary {
+  background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);
+  border-radius: 16px; overflow: hidden;
+}
+.sum-price-block {
+  text-align: center; padding: 28px 24px 20px;
+  background: linear-gradient(180deg, rgba(37,99,235,0.06) 0%, transparent 100%);
+}
+.sum-label {
+  display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--blue-light); margin-bottom: 6px;
+}
+.sum-price {
+  font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+  margin-bottom: 6px; transition: transform 0.3s var(--ease);
+}
+.sum-range { font-size: 0.8rem; color: var(--slate); }
+.sum-breakdown { padding: 20px 24px; }
+.bk-row {
+  display: flex; justify-content: space-between; padding: 6px 0;
+  font-size: 0.82rem; color: rgba(241,246,251,0.6);
+}
+.bk-total { color: var(--white); font-weight: 700; font-size: 0.95rem; }
+.bk-divider { height: 1px; background: var(--glass-border); margin: 6px 0; }
+.bk-hours { text-align: center; padding: 6px 0 2px; font-size: 0.75rem; color: var(--slate); }
+.text-green { color: var(--green); }
+
+.sum-trust {
+  display: flex; flex-wrap: wrap; gap: 7px; padding: 0 24px 20px; justify-content: center;
+}
+.t-chip {
+  display: flex; align-items: center; gap: 4px; font-size: 0.7rem;
+  color: var(--slate); font-weight: 500;
+}
+.t-chip svg { color: var(--green); }
+
+.sum-actions { display: flex; flex-direction: column; gap: 8px; padding: 0 24px 28px; }
+.sum-actions .btn { justify-content: center; width: 100%; }
+.sum-actions-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sum-actions-row .btn { justify-content: center; font-size: 0.78rem; padding: 10px 14px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .svc-grid { grid-template-columns: 1fr 1fr; }
+  .addons-grid { grid-template-columns: 1fr; }
+  .contact-fields { grid-template-columns: 1fr; }
+  .contact-fields .full { grid-column: auto; }
+  .sum-actions-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .svc-grid { grid-template-columns: 1fr; }
+  .freq-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="widget">
+  <div class="widget-header">
+    <span class="widget-label">Instant Quote</span>
+    <h2 class="widget-title">Your price in <span class="grad">60 seconds.</span></h2>
+    <p class="widget-sub">No email required. No sales call. Just an honest number.</p>
+  </div>
+
+  <div class="wizard" id="wizard">
+    <div class="progress">
+      <div class="progress-bar" id="pBar"></div>
+      <div class="progress-dots">
+        <span class="dot active" data-s="1">1</span>
+        <span class="dot" data-s="2">2</span>
+        <span class="dot" data-s="3">3</span>
+        <span class="dot" data-s="4">4</span>
+        <span class="dot" data-s="5">5</span>
+      </div>
+    </div>
+
+    <!-- ===== STEP 1 ===== -->
+    <div class="step active" data-s="1">
+      <h3 class="step-title">What kind of clean do you need?</h3>
+      <div class="svc-grid">
+        <div class="svc-card active" data-svc="routine" onclick="pickSvc(this)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="svc-name">Routine</span>
+          <span class="svc-desc">Weekly / bi-weekly</span>
+          <span class="svc-rate">$0.11/sqft</span>
+        </div>
+        <div class="svc-card" data-svc="deep" onclick="pickSvc(this)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span class="svc-name">Deep Clean</span>
+          <span class="svc-desc">Top to bottom</span>
+          <span class="svc-rate">$0.18/sqft</span>
+        </div>
+        <div class="svc-card" data-svc="turnover" onclick="pickSvc(this)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          <span class="svc-name">Turnover</span>
+          <span class="svc-desc">Airbnb / STR reset</span>
+          <span class="svc-rate">$0.20/sqft</span>
+        </div>
+        <div class="svc-card" data-svc="move" onclick="pickSvc(this)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span class="svc-name">Move In/Out</span>
+          <span class="svc-desc">Deposit-ready</span>
+          <span class="svc-rate">$0.25/sqft</span>
+        </div>
+      </div>
+      <!-- Turnover sub-options (conditional) -->
+      <div class="turnover-opts" id="turnoverOpts">
+        <span class="sub-note" style="width:100%;margin-bottom:4px">Turnover extras:</span>
+        <label class="turnover-chip" onclick="this.classList.toggle('active');Q.turnoverLinen=this.classList.contains('active');calc()">
+          <input type="checkbox"> Linen service (+$30)
+        </label>
+        <label class="turnover-chip" onclick="this.classList.toggle('active');Q.turnoverRestock=this.classList.contains('active');calc()">
+          <input type="checkbox"> Restock amenities (+$20)
+        </label>
+        <label class="turnover-chip" onclick="this.classList.toggle('active');Q.turnoverLockbox=this.classList.contains('active');calc()">
+          <input type="checkbox"> Lockbox key exchange (+$0)
+        </label>
+      </div>
+      <!-- Next day -->
+      <label class="next-day" id="ndToggle" onclick="toggleND()">
+        <input type="checkbox" id="ndCb">
+        <span class="nd-switch"></span>
+        <span class="nd-text">
+          <strong>Need it tomorrow?</strong>
+          <span>Next-day service +25%</span>
+        </span>
+        <span class="nd-badge">RUSH</span>
+      </label>
+      <div class="step-nav"><div></div><button class="btn btn-primary" onclick="go(1)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    </div>
+
+    <!-- ===== STEP 2 ===== -->
+    <div class="step" data-s="2">
+      <h3 class="step-title">Tell us about your home.</h3>
+      <p class="step-sub">Bedrooms and bathrooms affect your price too.</p>
+      <div class="home-grid">
+        <div class="input-group">
+          <label>Square Footage</label>
+          <div class="input-wrap">
+            <input type="number" id="iSqft" value="1800" min="400" max="15000" oninput="Q.sqft=+this.value||1800;$('iRange').value=Math.min(Q.sqft,8000);calc()">
+            <span class="input-suffix">sqft</span>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="iRange" min="400" max="8000" value="1800" oninput="Q.sqft=+this.value;$('iSqft').value=this.value;calc()">
+            <div class="range-labels"><span>400</span><span>2000</span><span>4000</span><span>8000</span></div>
+          </div>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Bedrooms</label>
+            <div class="stepper">
+              <button onclick="stepV('iBeds',1,-1)">-</button>
+              <input type="number" id="iBeds" value="3" min="1" max="10" readonly>
+              <button onclick="stepV('iBeds',1,1)">+</button>
+            </div>
+            <span class="input-hint">+$12-$28/room</span>
+          </div>
+          <div class="input-group">
+            <label>Bathrooms</label>
+            <div class="stepper">
+              <button onclick="stepV('iBaths',0.5,-1)">-</button>
+              <input type="number" id="iBaths" value="2" min="0.5" max="10" step="0.5" readonly>
+              <button onclick="stepV('iBaths',0.5,1)">+</button>
+            </div>
+            <span class="input-hint">Half-baths counted</span>
+          </div>
+        </div>
+      </div>
+      <div class="live-est"><span class="label">Estimated</span><span class="price" id="lp1">$234</span></div>
+      <div class="step-nav">
+        <button class="btn btn-ghost" onclick="go(-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
+        <button class="btn btn-primary" onclick="go(1)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- ===== STEP 3 ===== -->
+    <div class="step" data-s="3">
+      <h3 class="step-title">How often do you need us?</h3>
+      <p class="step-sub">Recurring clients save up to 25%.</p>
+      <div class="freq-grid">
+        <div class="freq-card" data-f="once" data-m="1.0" onclick="pickFreq(this)">
+          <span class="freq-name">One-time</span><span class="freq-save"></span><span class="freq-desc">No commitment</span>
+        </div>
+        <div class="freq-card" data-f="monthly" data-m="0.90" onclick="pickFreq(this)">
+          <span class="freq-name">Monthly</span><span class="freq-save">Save 10%</span><span class="freq-desc">Once a month</span>
+        </div>
+        <div class="freq-card popular" data-f="biweekly" data-m="0.85" onclick="pickFreq(this)">
+          <div class="freq-tag">Best Value</div>
+          <span class="freq-name">Bi-Weekly</span><span class="freq-save">Save 15%</span><span class="freq-desc">Every two weeks</span>
+        </div>
+        <div class="freq-card" data-f="weekly" data-m="0.75" onclick="pickFreq(this)">
+          <span class="freq-name">Weekly</span><span class="freq-save">Save 25%</span><span class="freq-desc">Same day every week</span>
+        </div>
+      </div>
+      <div class="live-est"><span class="label">Estimated</span><span class="price" id="lp2">$234</span></div>
+      <div class="step-nav">
+        <button class="btn btn-ghost" onclick="go(-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
+        <button class="btn btn-primary" onclick="go(1)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- ===== STEP 4 ===== -->
+    <div class="step" data-s="4">
+      <h3 class="step-title">Any extras?</h3>
+      <p class="step-sub">Add what you need. Skip what you don't.</p>
+      <div class="addons-list">
+        <!-- Windows (expandable) -->
+        <div class="addon" id="aWin" onclick="togWin()">
+          <div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span class="addon-name">Interior Windows</span><span class="addon-price">$12/window</span>
+        </div>
+        <div class="sub-opts" id="winSub">
+          <div class="sub-row"><label>How many?</label>
+            <div class="mini-step"><button onclick="setWin(Q.winCount-1)">-</button><input id="iWin" value="6" readonly><button onclick="setWin(Q.winCount+1)">+</button></div>
+          </div>
+          <label class="sub-check"><input type="checkbox" id="cbHigh" onchange="Q.winHigh=this.checked;calc()"> Hard-to-reach / above 6ft (+$45)</label>
+        </div>
+        <!-- Pets (expandable) -->
+        <div class="addon" id="aPet" onclick="togPet()">
+          <div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span class="addon-name">Pets / Heavy Mess</span><span class="addon-price">From $15</span>
+        </div>
+        <div class="sub-opts" id="petSub">
+          <div class="sub-row"><label>How many pets?</label>
+            <div class="mini-step"><button onclick="setPet(Q.petCount-1)">-</button><input id="iPet" value="1" readonly><button onclick="setPet(Q.petCount+1)">+</button></div>
+          </div>
+          <span class="sub-note">$15 first pet + $10 each additional</span>
+        </div>
+        <!-- Carpet (expandable) -->
+        <div class="addon" id="aCarpet" onclick="togCarpet()">
+          <div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span class="addon-name">Carpet Steam Clean</span><span class="addon-price">$0.25/sqft</span>
+        </div>
+        <div class="sub-opts" id="carpetSub">
+          <div class="sub-row"><label>Carpet area</label>
+            <input class="mini-input" id="iCarpet" type="number" value="400" min="50" max="5000" onchange="Q.carpetSqft=Math.max(50,+this.value||0);calc()"> sqft
+          </div>
+          <span class="sub-note">Min $35 &middot; Perfect for a few rooms</span>
+        </div>
+        <!-- Simple addons grid -->
+        <div class="addons-grid">
+          <div class="addon" data-a="fridge" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Inside Fridge</span><span class="addon-price">+$35</span></div>
+          <div class="addon" data-a="oven" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Inside Oven</span><span class="addon-price">+$45</span></div>
+          <div class="addon" data-a="ceiling-fans" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Ceiling Fans</span><span class="addon-price">+$15</span></div>
+          <div class="addon" data-a="patio" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Patio</span><span class="addon-price">+$55</span></div>
+          <div class="addon" data-a="power-wash" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Power Wash</span><span class="addon-price">+$85</span></div>
+          <div class="addon" data-a="grout" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Grout Cleaning</span><span class="addon-price">+$75</span></div>
+          <div class="addon" data-a="steam" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Steam Clean</span><span class="addon-price">+$65</span></div>
+          <div class="addon" data-a="sanitation" onclick="togA(this)"><div class="addon-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><span class="addon-name">Sanitation</span><span class="addon-price">+$55</span></div>
+        </div>
+      </div>
+      <div class="live-est"><span class="label">Estimated</span><span class="price" id="lp3">$234</span></div>
+      <div class="step-nav">
+        <button class="btn btn-ghost" onclick="go(-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
+        <button class="btn btn-primary" onclick="go(1)">Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- ===== STEP 5 ===== -->
+    <div class="step" data-s="5">
+      <h3 class="step-title">Almost there.</h3>
+      <div class="zip-wrap">
+        <input type="text" id="iZip" placeholder="Enter ZIP code" maxlength="5" oninput="onZip(this)">
+        <span class="zip-fb" id="zipFb"></span>
+      </div>
+      <!-- Contact capture -->
+      <div class="contact-fields">
+        <input class="cf-input full" id="cName" type="text" placeholder="Your name (optional)">
+        <input class="cf-input" id="cPhone" type="tel" placeholder="Phone number">
+        <input class="cf-input" id="cEmail" type="email" placeholder="Email (optional)">
+      </div>
+      <p class="cf-note">We'll only use this to send your quote. No spam, ever.</p>
+      <!-- Summary -->
+      <div class="summary">
+        <div class="sum-price-block">
+          <span class="sum-label">Your Estimate</span>
+          <div class="sum-price" id="sPrice">$234</div>
+          <span class="sum-range" id="sRange">Range: $199 - $269</span>
+        </div>
+        <div class="sum-breakdown">
+          <div class="bk-row"><span id="bkSvc">Routine Clean</span><span id="bkBase">$234</span></div>
+          <div class="bk-row" id="rND" style="display:none"><span>Next-day rush</span><span id="bkND">+$58</span></div>
+          <div class="bk-row" id="rFreq" style="display:none"><span id="bkFL">Discount</span><span id="bkFV" class="text-green">-$35</span></div>
+          <div class="bk-row" id="rWin" style="display:none"><span id="bkWL">Windows</span><span id="bkWV">+$72</span></div>
+          <div class="bk-row" id="rPet" style="display:none"><span id="bkPL">Pets</span><span id="bkPV">+$15</span></div>
+          <div class="bk-row" id="rCar" style="display:none"><span id="bkCL">Carpet</span><span id="bkCV">+$100</span></div>
+          <div class="bk-row" id="rTurn" style="display:none"><span>Turnover extras</span><span id="bkTurn">+$50</span></div>
+          <div class="bk-row" id="rAdd" style="display:none"><span>Add-ons</span><span id="bkAdd">+$0</span></div>
+          <div class="bk-row" id="rZip" style="display:none"><span id="bkZL">Area</span><span id="bkZV">+$0</span></div>
+          <div class="bk-row" id="rSea" style="display:none"><span id="bkSL">Season</span><span id="bkSV">+$0</span></div>
+          <div class="bk-divider"></div>
+          <div class="bk-row bk-total"><span>Estimated Total</span><span id="bkTot">$234</span></div>
+          <div class="bk-hours"><span id="bkHrs">~5.6 hrs</span></div>
+        </div>
+        <div class="sum-trust">
+          <span class="t-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully insured</span>
+          <span class="t-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Satisfaction guaranteed</span>
+          <span class="t-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Easy reschedule</span>
+        </div>
+        <div class="sum-actions">
+          <button class="btn btn-primary btn-lg" onclick="bookNow()">Book Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          <div class="sum-actions-row">
+            <button class="btn btn-outline" onclick="dlPDF()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</button>
+            <a class="btn btn-outline" href="sms:3464015841"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Text Us</a>
+          </div>
+          <a class="btn btn-ghost" href="tel:3464015841">Or call — (346) 401-5841</a>
+        </div>
+      </div>
+      <div class="step-nav" style="margin-top:20px">
+        <button class="btn btn-ghost" onclick="go(-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* ============================================
+   QUOTE ENGINE — Wix-ready, self-contained
+   ============================================ */
+var $=function(id){return document.getElementById(id)};
+
+// ---- CONFIG ----
+var WEBHOOK_URL = 'https://blaze.taildcd0ef.ts.net/webhook/quote';
+var WIX_BOOKING_URL = 'https://www.astrocleanings.com/book'; // SET THIS: your Wix booking page
+
+var RATES={routine:0.11,deep:0.18,turnover:0.20,move:0.25};
+var MINS={routine:115,deep:175,turnover:195,move:250};
+var BED_S={routine:12,deep:20,turnover:22,move:28};
+var BATH_S={routine:8,deep:15,turnover:18,move:22};
+var ADDONS={fridge:35,oven:45,patio:55,'power-wash':85,grout:75,steam:65,sanitation:55,'ceiling-fans':15};
+var ZIPS={
+  '77429':{m:1.05,l:'Cypress'},'77433':{m:1.05,l:'Cypress'},'77434':{m:1.05,l:'Cypress'},
+  '77493':{m:1.05,l:'Cypress'},'77019':{m:1.15,l:'River Oaks'},'77027':{m:1.15,l:'West University'},
+  '77005':{m:1.12,l:'West University'},'77006':{m:1.10,l:'Montrose'},
+  '77380':{m:1.08,l:'The Woodlands'},'77381':{m:1.08,l:'The Woodlands'},'77382':{m:1.10,l:'The Woodlands'},
+  '77478':{m:1.06,l:'Sugar Land'},'77479':{m:1.08,l:'Sugar Land'},
+  '77450':{m:1.05,l:'Katy'},'77494':{m:1.07,l:'Cinco Ranch'},
+  '77024':{m:1.12,l:'Memorial'},'77079':{m:1.08,l:'Memorial'},
+  '77008':{m:1.08,l:'Heights'},'77009':{m:1.06,l:'Heights'},
+  '77002':{m:1.05,l:'Downtown'},'77003':{m:1.04,l:'EaDo'},'77004':{m:1.04,l:'Midtown'},
+  '77007':{m:1.08,l:'Washington Ave'},'77056':{m:1.10,l:'Galleria'},'77057':{m:1.08,l:'Galleria'}
+};
+var FREQ_N={once:'One-time',monthly:'Monthly',biweekly:'Bi-weekly',weekly:'Weekly'};
+
+// ---- STATE ----
+var Q={
+  step:1, svc:'routine', nextDay:false,
+  sqft:1800, beds:3, baths:2,
+  freq:'once', freqM:1.0,
+  addons:[], hasPets:false, petCount:1,
+  winCount:0, winHigh:false,
+  carpetSqft:0,
+  zip:'', zipM:1.0, zipL:'',
+  turnoverLinen:false, turnoverRestock:false, turnoverLockbox:false
+};
+
+// ---- CALC ----
+function calc(){
+  var base=Q.sqft*RATES[Q.svc];
+  base+=Q.beds*BED_S[Q.svc];
+  base+=Q.baths*BATH_S[Q.svc];
+  if(base<MINS[Q.svc])base=MINS[Q.svc];
+  var ndCost=0;
+  if(Q.nextDay){ndCost=base*0.25;base+=ndCost;}
+  var turnCost=0;
+  if(Q.svc==='turnover'){
+    if(Q.turnoverLinen)turnCost+=30;
+    if(Q.turnoverRestock)turnCost+=20;
+  }
+  var freq=base*Q.freqM,freqSave=base-freq;
+  var aFlat=0;Q.addons.forEach(function(a){aFlat+=(ADDONS[a]||0);});
+  var wCost=Q.winCount>0?Q.winCount*12+(Q.winHigh?45:0):0;
+  var pCost=Q.hasPets&&Q.petCount>0?15+Math.max(0,Q.petCount-1)*10:0;
+  var cCost=Q.carpetSqft>0?Math.max(35,Q.carpetSqft*0.25):0;
+  var addTotal=aFlat+wCost+pCost+Math.round(cCost)+turnCost;
+  var sub=freq+addTotal;
+  var zipAdj=freq*(Q.zipM-1);sub+=zipAdj;
+  var mo=new Date().getMonth(),seaM=1,seaL='';
+  if(mo>=5&&mo<=8){seaM=1.05;seaL='Summer (+5%)';}
+  else if(mo===11||mo===0){seaM=1.03;seaL='Holiday (+3%)';}
+  else if(mo>=1&&mo<=2){seaM=0.97;seaL='Winter (-3%)';}
+  var seaAdj=freq*(seaM-1);sub+=seaAdj;
+  var raw=base+addTotal,mx=raw*1.2,mn=raw*0.8;
+  if(sub>mx)sub=mx;if(sub<mn)sub=mn;
+  var tot=Math.round(sub),lo=Math.round(tot*0.85),hi=Math.round(tot*1.15);
+  return{base:Math.round(base),ndCost:Math.round(ndCost),freq:Math.round(freq),
+    freqSave:Math.round(freqSave),aFlat:aFlat,wCost:Math.round(wCost),
+    pCost:Math.round(pCost),cCost:Math.round(cCost),turnCost:turnCost,
+    zipAdj:Math.round(zipAdj),seaAdj:Math.round(seaAdj),seaL:seaL,
+    tot:tot,lo:lo,hi:hi,hrs:(tot/42).toFixed(1)};
+}
+
+function upLive(){
+  var c=calc();
+  ['lp1','lp2','lp3'].forEach(function(id){var e=$(id);if(e)e.textContent='$'+c.tot;});
+  if(Q.step===5)upSummary();
+}
+
+function upSummary(){
+  var c=calc(),SN={routine:'Routine Clean',deep:'Deep Clean',turnover:'Turnover Clean',move:'Move In/Out'};
+  $('sPrice').textContent='$'+c.tot;
+  $('sRange').textContent='Range: $'+c.lo+' \u2013 $'+c.hi;
+  $('bkSvc').textContent=SN[Q.svc];$('bkBase').textContent='$'+c.base;
+  sr('rND',c.ndCost>0);$('bkND').textContent='+$'+c.ndCost;
+  sr('rFreq',c.freqSave>0);$('bkFL').textContent=FREQ_N[Q.freq]+' discount';$('bkFV').textContent='-$'+c.freqSave;
+  sr('rWin',c.wCost>0);$('bkWL').textContent=Q.winCount+' windows'+(Q.winHigh?' + high':'');$('bkWV').textContent='+$'+c.wCost;
+  sr('rPet',c.pCost>0);$('bkPL').textContent=Q.petCount+(Q.petCount===1?' pet':' pets');$('bkPV').textContent='+$'+c.pCost;
+  sr('rCar',c.cCost>0);$('bkCL').textContent='Carpet ('+Q.carpetSqft+' sqft)';$('bkCV').textContent='+$'+c.cCost;
+  sr('rTurn',c.turnCost>0);$('bkTurn').textContent='+$'+c.turnCost;
+  sr('rAdd',c.aFlat>0);$('bkAdd').textContent='+$'+c.aFlat;
+  sr('rZip',Q.zipM!==1);$('bkZL').textContent=Q.zipL;$('bkZV').textContent=(c.zipAdj>=0?'+':'')+('$'+c.zipAdj);
+  sr('rSea',c.seaL!=='');$('bkSL').textContent=c.seaL.split(' (')[0];$('bkSV').textContent=(c.seaAdj>=0?'+':'')+('$'+c.seaAdj);
+  $('bkTot').textContent='$'+c.tot;$('bkHrs').textContent='~'+c.hrs+' hrs';
+}
+function sr(id,show){$(id).style.display=show?'flex':'none';}
+
+// ---- NAV ----
+function go(dir){
+  var cur=Q.step,nxt=cur+dir;
+  if(nxt<1||nxt>5)return;
+  document.querySelector('.step[data-s="'+cur+'"]').classList.remove('active');
+  var d=document.querySelector('.dot[data-s="'+cur+'"]');
+  if(dir>0){d.classList.remove('active');d.classList.add('done');}
+  else{d.classList.remove('active');}
+  Q.step=nxt;
+  document.querySelector('.step[data-s="'+nxt+'"]').classList.add('active');
+  var nd=document.querySelector('.dot[data-s="'+nxt+'"]');
+  nd.classList.remove('done');nd.classList.add('active');
+  $('pBar').style.width=(nxt/5*100)+'%';
+  upLive();if(nxt===5)upSummary();
+  document.querySelector('.wizard').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ---- INTERACTIONS ----
+function pickSvc(el){
+  document.querySelectorAll('.svc-card').forEach(function(c){c.classList.remove('active');});
+  el.classList.add('active');Q.svc=el.dataset.svc;
+  var to=$('turnoverOpts');
+  if(Q.svc==='turnover'){to.classList.add('show');}else{to.classList.remove('show');}
+  calc();upLive();
+}
+function toggleND(){
+  var el=$('ndToggle'),cb=$('ndCb');
+  Q.nextDay=!Q.nextDay;cb.checked=Q.nextDay;
+  el.classList.toggle('on',Q.nextDay);calc();upLive();
+}
+function pickFreq(el){
+  document.querySelectorAll('.freq-card').forEach(function(c){c.classList.remove('active');});
+  el.classList.add('active');Q.freq=el.dataset.f;Q.freqM=+el.dataset.m;calc();upLive();
+}
+function togA(el){
+  el.classList.toggle('active');var a=el.dataset.a,i=Q.addons.indexOf(a);
+  if(i>-1)Q.addons.splice(i,1);else Q.addons.push(a);calc();upLive();
+}
+function togWin(){
+  var el=$('aWin'),sub=$('winSub');el.classList.toggle('active');
+  var on=el.classList.contains('active');
+  Q.winCount=on?(+$('iWin').value||6):0;
+  sub.classList.toggle('show',on);
+  if(on&&Q.winCount===0){Q.winCount=6;$('iWin').value=6;}
+  calc();upLive();
+}
+function setWin(v){Q.winCount=Math.max(1,Math.min(50,v));$('iWin').value=Q.winCount;calc();upLive();}
+function togPet(){
+  var el=$('aPet'),sub=$('petSub');el.classList.toggle('active');
+  Q.hasPets=el.classList.contains('active');
+  sub.classList.toggle('show',Q.hasPets);calc();upLive();
+}
+function setPet(v){Q.petCount=Math.max(1,Math.min(10,v));$('iPet').value=Q.petCount;calc();upLive();}
+function togCarpet(){
+  var el=$('aCarpet'),sub=$('carpetSub');el.classList.toggle('active');
+  var on=el.classList.contains('active');
+  Q.carpetSqft=on?(+$('iCarpet').value||400):0;
+  sub.classList.toggle('show',on);
+  if(on&&Q.carpetSqft===0){Q.carpetSqft=400;$('iCarpet').value=400;}
+  calc();upLive();
+}
+function stepV(id,step,dir){
+  var inp=$(id),v=parseFloat(inp.value)+dir*step;
+  var mn=parseFloat(inp.min)||0.5,mx=parseFloat(inp.max)||10;
+  if(v<mn)v=mn;if(v>mx)v=mx;
+  inp.value=step<1?v:Math.round(v);
+  if(id==='iBeds')Q.beds=Math.round(v);
+  if(id==='iBaths')Q.baths=v;
+  calc();upLive();
+}
+function onZip(el){
+  var z=el.value.replace(/\D/g,'').substring(0,5);el.value=z;Q.zip=z;
+  var fb=$('zipFb');
+  if(z.length===5){
+    var d=ZIPS[z];
+    if(d){Q.zipM=d.m;Q.zipL=d.l;fb.textContent='We serve '+d.l+'!';fb.style.color='var(--green)';}
+    else{Q.zipM=1;Q.zipL='';fb.textContent='Houston area \u2014 standard pricing';fb.style.color='var(--slate)';}
+  }else{Q.zipM=1;Q.zipL='';fb.textContent='';}
+  upSummary();
+}
+
+// ---- BOOK NOW (sends to Wix + webhook) ----
+function bookNow(){
+  var c=calc();
+  var lead={
+    name:$('cName').value.trim(),
+    phone:$('cPhone').value.trim(),
+    email:$('cEmail').value.trim(),
+    service:Q.svc,
+    nextDay:Q.nextDay,
+    sqft:Q.sqft,beds:Q.beds,baths:Q.baths,
+    frequency:Q.freq,
+    addons:Q.addons,
+    hasPets:Q.hasPets,petCount:Q.petCount,
+    windowCount:Q.winCount,windowsHighReach:Q.winHigh,
+    carpetSqft:Q.carpetSqft,
+    turnoverLinen:Q.turnoverLinen,turnoverRestock:Q.turnoverRestock,
+    zip:Q.zip,
+    total:c.tot,range:c.lo+'-'+c.hi,
+    timestamp:new Date().toISOString()
+  };
+  // Send to webhook (Blaze)
+  if(WEBHOOK_URL){
+    try{
+      fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead),mode:'no-cors'});
+    }catch(e){}
+  }
+  // Notify parent Wix page via postMessage
+  try{window.parent.postMessage({type:'astro-quote-lead',data:lead},'*');}catch(e){}
+  // Redirect to Wix booking
+  window.open(WIX_BOOKING_URL,'_blank');
+}
+
+// ---- PDF ----
+function dlPDF(){
+  var c=calc(),j=window.jspdf.jsPDF,d=new j();
+  d.setFillColor(6,10,18);d.rect(0,0,210,50,'F');
+  d.setTextColor(255,255,255);d.setFontSize(24);d.text('ASTRO CLEANING SERVICES',20,25);
+  d.setFontSize(11);d.text('Houston, TX | (346) 401-5841 | astrocleanings.com',20,35);
+  d.setTextColor(20,20,20);d.setFontSize(18);d.text('Cleaning Estimate',20,70);
+  d.setFontSize(10);d.setTextColor(100,100,100);
+  d.text('Date: '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),20,80);
+  d.text('Valid for 30 days',20,86);
+  var y=100,SN={routine:'Routine',deep:'Deep Clean',turnover:'Turnover',move:'Move In/Out'};
+  d.setTextColor(20,20,20);d.setFontSize(12);
+  d.text('Service: '+SN[Q.svc]+(Q.nextDay?' (NEXT-DAY)':''),20,y);y+=8;
+  d.text('Home: '+Q.sqft+' sqft | '+Q.beds+' bed / '+Q.baths+' bath',20,y);y+=8;
+  d.text('Frequency: '+FREQ_N[Q.freq],20,y);y+=8;
+  if(Q.zip){d.text('ZIP: '+Q.zip,20,y);y+=8;}
+  y+=4;d.setDrawColor(200,200,200);d.line(20,y,190,y);y+=10;
+  d.setFontSize(11);d.text('Base cleaning',20,y);d.text('$'+c.base,170,y,{align:'right'});y+=8;
+  if(c.ndCost>0){d.text('Next-day rush',20,y);d.text('+$'+c.ndCost,170,y,{align:'right'});y+=8;}
+  if(c.freqSave>0){d.setTextColor(34,139,34);d.text(FREQ_N[Q.freq]+' discount',20,y);d.text('-$'+c.freqSave,170,y,{align:'right'});y+=8;d.setTextColor(20,20,20);}
+  if(c.wCost>0){d.text(Q.winCount+' windows'+(Q.winHigh?' + high-reach':''),20,y);d.text('+$'+c.wCost,170,y,{align:'right'});y+=8;}
+  if(c.pCost>0){d.text(Q.petCount+' pet(s)',20,y);d.text('+$'+c.pCost,170,y,{align:'right'});y+=8;}
+  if(c.cCost>0){d.text('Carpet ('+Q.carpetSqft+' sqft)',20,y);d.text('+$'+c.cCost,170,y,{align:'right'});y+=8;}
+  if(c.turnCost>0){d.text('Turnover extras',20,y);d.text('+$'+c.turnCost,170,y,{align:'right'});y+=8;}
+  if(c.aFlat>0){d.text('Add-on services',20,y);d.text('+$'+c.aFlat,170,y,{align:'right'});y+=8;}
+  y+=4;d.line(20,y,190,y);y+=10;
+  d.setFontSize(16);d.setFont(undefined,'bold');
+  d.text('ESTIMATED TOTAL',20,y);d.text('$'+c.tot,170,y,{align:'right'});y+=8;
+  d.setFont(undefined,'normal');d.setFontSize(10);d.setTextColor(100,100,100);
+  d.text('Range: $'+c.lo+' - $'+c.hi+' | ~'+c.hrs+' hours',20,y);
+  d.setFontSize(9);d.text('Automated estimate. Final price confirmed after walkthrough. Fully insured.',20,250);
+  d.text('Call or text (346) 401-5841',20,256);
+  // Add contact info if provided
+  var name=$('cName').value.trim();
+  if(name){d.text('Prepared for: '+name,20,96);}
+  d.save('Astro-Quote-'+new Date().toISOString().slice(0,10)+'.pdf');
+}
+
+// ---- INIT ----
+document.addEventListener('DOMContentLoaded',function(){
+  var df=document.querySelector('.freq-card[data-f="once"]');
+  if(df)df.classList.add('active');
+  calc();upLive();
+});
+</script>
+</body>
+</html>

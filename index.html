@@ -7,7 +7,7 @@
   <meta name="description" content="Houston's trusted residential cleaning team. Instant quotes, transparent pricing, real people who care about your home.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -48,26 +48,31 @@
     <div class="hero-overlay"></div>
     <div class="hero-grain"></div>
     <div class="hero-vignette"></div>
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
-    <div class="hero-particles" id="particles"></div>
+    <!-- Space layer — persists on scroll -->
+    <div class="space-layer" id="spaceLayer">
+      <div class="ambient-glow glow-1"></div>
+      <div class="ambient-glow glow-2"></div>
+      <div class="hero-particles" id="particles"></div>
 
-    <!-- Cosmic orbital rings -->
-    <svg class="hero-orbits" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="600" cy="600" rx="520" ry="200" stroke="rgba(42,90,160,0.12)" stroke-width="0.8" class="orbit-hero orbit-hero-1"/>
-      <ellipse cx="600" cy="600" rx="420" ry="160" stroke="rgba(61,125,216,0.08)" stroke-width="0.6" class="orbit-hero orbit-hero-2"/>
-      <ellipse cx="600" cy="600" rx="340" ry="130" stroke="rgba(42,90,160,0.06)" stroke-width="0.5" class="orbit-hero orbit-hero-3"/>
-      <!-- Orbiting dots -->
-      <circle r="3" fill="rgba(61,125,216,0.5)">
-        <animateMotion dur="20s" repeatCount="indefinite" path="M 1120,600 A 520,200 0 1 1 80,600 A 520,200 0 1 1 1120,600"/>
-      </circle>
-      <circle r="2" fill="rgba(100,160,240,0.35)">
-        <animateMotion dur="28s" repeatCount="indefinite" path="M 1020,600 A 420,160 0 1 1 180,600 A 420,160 0 1 1 1020,600"/>
-      </circle>
-      <circle r="1.5" fill="rgba(61,125,216,0.25)">
-        <animateMotion dur="16s" repeatCount="indefinite" path="M 940,600 A 340,130 0 1 1 260,600 A 340,130 0 1 1 940,600"/>
-      </circle>
-    </svg>
+      <!-- Ambient anamorphic flare -->
+      <div class="ambient-flare"></div>
+
+      <!-- Cosmic orbital rings -->
+      <svg class="hero-orbits" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="600" cy="600" rx="520" ry="200" stroke="rgba(42,90,160,0.12)" stroke-width="0.8" class="orbit-hero orbit-hero-1"/>
+        <ellipse cx="600" cy="600" rx="420" ry="160" stroke="rgba(61,125,216,0.08)" stroke-width="0.6" class="orbit-hero orbit-hero-2"/>
+        <ellipse cx="600" cy="600" rx="340" ry="130" stroke="rgba(42,90,160,0.06)" stroke-width="0.5" class="orbit-hero orbit-hero-3"/>
+        <circle r="3" fill="rgba(61,125,216,0.5)">
+          <animateMotion dur="20s" repeatCount="indefinite" path="M 1120,600 A 520,200 0 1 1 80,600 A 520,200 0 1 1 1120,600"/>
+        </circle>
+        <circle r="2" fill="rgba(100,160,240,0.35)">
+          <animateMotion dur="28s" repeatCount="indefinite" path="M 1020,600 A 420,160 0 1 1 180,600 A 420,160 0 1 1 1020,600"/>
+        </circle>
+        <circle r="1.5" fill="rgba(61,125,216,0.25)">
+          <animateMotion dur="16s" repeatCount="indefinite" path="M 940,600 A 340,130 0 1 1 260,600 A 340,130 0 1 1 940,600"/>
+        </circle>
+      </svg>
+    </div>
 
     <div class="hero-content">
       <div class="hero-logo-badge reveal" data-delay="0">
@@ -76,23 +81,20 @@
       <span class="hero-tag reveal" data-delay="0.1">Houston's Premier Cleaning Crew</span>
 
       <h1 class="hero-headline reveal" data-delay="0.25">
-        <span>Your Home</span>
-        <span class="line-accent">Our Frontier</span>
+        <span>Your Home,</span>
+        <span class="line-accent">Our Frontier.</span>
       </h1>
 
       <!-- Cinematic lens flare — multi-layer bloom -->
       <div class="flare-wrap reveal" data-delay="0.25">
         <svg class="frontier-streak" viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <defs>
-            <filter id="bloom" x="-50%" y="-200%" width="200%" height="600%" color-interpolation-filters="sRGB">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b1"/>
-              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b2"/>
-              <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="b3"/>
-              <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="b4"/>
-              <feColorMatrix in="b3" type="matrix" result="b3w" values="1.4 0 0 0 0.04  0 1.4 0 0 0.04  0 0 1.6 0 0.08  0 0 0 1 0"/>
-              <feColorMatrix in="b4" type="matrix" result="b4w" values="1.2 0 0 0 0.02  0 1.2 0 0 0.02  0 0 1.3 0 0.04  0 0 0 0.6 0"/>
+            <filter id="bloom" x="-30%" y="-100%" width="160%" height="400%" color-interpolation-filters="sRGB">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="b1"/>
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2"/>
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="b3"/>
+              <feColorMatrix in="b3" type="matrix" result="b3w" values="1.5 0 0 0 0.05  0 1.5 0 0 0.05  0 0 1.8 0 0.1  0 0 0 0.8 0"/>
               <feMerge>
-                <feMergeNode in="b4w"/>
                 <feMergeNode in="b3w"/>
                 <feMergeNode in="b2"/>
                 <feMergeNode in="b1"/>
@@ -126,8 +128,7 @@
       </div>
 
       <p class="hero-sub reveal" data-delay="0.45">
-        We don't cut corners &mdash; we clean them.<br class="hide-mobile">
-        Houston's trusted crew. Not a franchise. Just us.
+        We don't cut corners &mdash; we clean them.
       </p>
 
       <!-- Two buttons -->
@@ -143,11 +144,11 @@
 
       <!-- Micro bullets -->
       <div class="hero-micro reveal" data-delay="0.75">
-        <span>Real Prices. No Surprises.</span>
+        <span>Real Prices</span>
         <span class="hero-micro-dot">&bull;</span>
         <span>Next-Day Service</span>
         <span class="hero-micro-dot">&bull;</span>
-        <span>Book in 60 Seconds</span>
+        <span>60-Second Quotes</span>
       </div>
     </div>
 

@@ -21,13 +21,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // ---- SCROLL REVEAL (Cinematic sequencing) ----
   var revealElements = document.querySelectorAll('.reveal');
 
-  // Hero elements get special treatment — trigger immediately on load
+  // Hero elements — gentle cascade after ambient flare settles
   var heroReveals = document.querySelectorAll('.hero .reveal');
+  var introDelay = 600;
   heroReveals.forEach(function(el) {
     var delay = parseFloat(el.dataset.delay) || 0;
     setTimeout(function() {
       el.classList.add('visible');
-    }, 200 + delay * 1000);
+    }, introDelay + delay * 1000);
   });
 
   // Everything else — scroll triggered with professional rootMargin
@@ -53,14 +54,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // ---- NAV SCROLL BEHAVIOR ----
+  // ---- NAV SCROLL + SPACE LAYER PARALLAX ----
   var nav = document.getElementById('nav');
+  var spaceLayer = document.getElementById('spaceLayer');
+  var heroHeight = window.innerHeight;
 
   window.addEventListener('scroll', function() {
-    if (window.scrollY > 60) {
+    var y = window.scrollY;
+
+    // Nav
+    if (y > 60) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
+    }
+
+    // Space layer — fade out as you scroll past hero
+    if (spaceLayer) {
+      if (y < heroHeight * 0.5) {
+        spaceLayer.classList.remove('fading', 'hidden');
+        spaceLayer.style.transform = 'translateY(' + (y * 0.3) + 'px)';
+      } else if (y < heroHeight * 1.2) {
+        spaceLayer.classList.add('fading');
+        spaceLayer.classList.remove('hidden');
+        spaceLayer.style.transform = 'translateY(' + (y * 0.3) + 'px)';
+      } else {
+        spaceLayer.classList.add('hidden');
+        spaceLayer.classList.remove('fading');
+      }
     }
   }, { passive: true });
 
