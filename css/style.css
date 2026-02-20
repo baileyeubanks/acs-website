@@ -2432,6 +2432,10 @@ img, video { display: block; max-width: 100%; }
   .hero-scroll {
     bottom: calc(36px + env(safe-area-inset-bottom));
   }
+
+  .hero-content {
+    padding-top: calc(80px + env(safe-area-inset-top));
+  }
 }
 
 /* iOS overscroll rubber-banding fix */
@@ -2543,7 +2547,7 @@ html {
 
   /* Hero mobile refinements */
   .hero-content {
-    padding: 0 24px;
+    padding: 80px 24px 0;
   }
 
   .hero-logo-mark {
@@ -2668,6 +2672,7 @@ html {
 
   .hero-content {
     max-width: 600px;
+    padding-top: 80px;
   }
 
   .hero-logo-mark {
